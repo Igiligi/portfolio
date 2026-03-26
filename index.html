@@ -5,6 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chibueze Igiligi | Data Analyst & AI/ML Enthusiast</title>
   <style>
+    /* Typewriter Container */
+.typewriter-container {
+  font-size: 2rem;
+  font-weight: 600;
+  min-height: 80px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+#typewriter-text {
+  color: #075E54;
+  text-align: center;
+  display: inline-block;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  animation: blink 0.7s infinite;
+  font-weight: 100;
+  color: #128C7E;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .typewriter-container {
+    font-size: 1.3rem;
+    min-height: 60px;
+  }
+}
     * {
       margin: 0;
       padding: 0;
@@ -282,5 +321,55 @@
       <p style="margin-top: 0.5rem;">© 2026 Chibueze Igiligi | Built with 💚</p>
     </div>
   </div>
+  <script>
+  // Typewriter Effect
+  const messages = [
+    "Welcome to My Space 👋",
+    "Igiligi's Digital Space ✨",
+    "Data • AI • Innovation 🚀"
+  ];
+  
+  let messageIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let currentText = "";
+  const typewriterElement = document.getElementById("typewriter-text");
+  
+  function typeEffect() {
+    const fullText = messages[messageIndex];
+    
+    if (isDeleting) {
+      // Deleting text
+      currentText = fullText.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      // Typing text
+      currentText = fullText.substring(0, charIndex + 1);
+      charIndex++;
+    }
+    
+    typewriterElement.textContent = currentText;
+    
+    // Determine speed
+    let speed = isDeleting ? 50 : 100;
+    
+    // If typing is complete
+    if (!isDeleting && charIndex === fullText.length) {
+      isDeleting = true;
+      speed = 1500; // Pause at the end of typing
+    }
+    // If deleting is complete
+    else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      messageIndex = (messageIndex + 1) % messages.length;
+      speed = 500; // Pause before typing next message
+    }
+    
+    setTimeout(typeEffect, speed);
+  }
+  
+  // Start the typewriter effect
+  typeEffect();
+</script>
 </body>
 </html>
