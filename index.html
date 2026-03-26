@@ -4,19 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chibueze Igiligi | Data Analyst & AI/ML Enthusiast</title>
+  
   <style>
-    /* Typewriter Container */
-.typewriter-container {
-  font-size: 2rem;
-  font-weight: 600;
-  min-height: 80px;
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 5px;
-  flex-wrap: wrap;
-}
+      /* Typewriter Container */
+    .typewriter-container {
+    font-size: 2rem;
+    font-weight: 600;
+    min-height: 80px;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+    }
 
 #typewriter-text {
   color: #075E54;
@@ -60,13 +61,23 @@
     .container {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 2rem 1.5rem;
+      padding: 1rem 1.5rem 2rem;
+      scroll-margin-top: 120px; /* Helps when linking to sections */
     }
 
-    /* Header Section */
+    /* Header Section - Sticky */
     .header {
       text-align: left;
       margin-bottom: 3rem;
+      position: sticky;
+      top: 0;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+      padding: 1rem 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: rgba(245, 247, 250, 0.95);
+      border-bottom: 1px solid rgba(7, 94, 84, 0.1);
+      transition: all 0.3s ease;
     }
 
     .header h1 {
@@ -238,6 +249,7 @@
       }
     }
   </style>
+  
 </head>
 <body>
   <div class="container">
