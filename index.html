@@ -6,6 +6,126 @@
   <title>Chibueze Igiligi | Data Analyst & AI/ML Enthusiast</title>
   
   <style>
+
+    /* Header Layout */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header-left {
+  flex: 1;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Navigation Menu */
+.nav-menu {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #1e293b;
+  font-weight: 500;
+  transition: color 0.2s;
+  font-size: 0.95rem;
+}
+
+.nav-menu a:hover {
+  color: #075E54;
+}
+
+.contact-btn {
+  background: #075E54;
+  color: white !important;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.contact-btn:hover {
+  background: #128C7E;
+  color: white !important;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-mode-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background: #1a1a2e;
+  color: #e2e8f0;
+}
+
+body.dark-mode .card {
+  background: #2d2d44;
+  color: #e2e8f0;
+}
+
+body.dark-mode .nav-menu a {
+  color: #e2e8f0;
+}
+
+body.dark-mode .nav-menu a:hover {
+  color: #25D366;
+}
+
+body.dark-mode .contact-btn {
+  background: #25D366;
+  color: #1a1a2e !important;
+}
+
+body.dark-mode .dark-mode-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .header {
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(37, 211, 102, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .nav-menu {
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+  
+  .nav-menu a {
+    font-size: 0.85rem;
+  }
+}
       /* Typewriter Container */
     .typewriter-container {
     font-size: 1.5rem;
@@ -277,14 +397,14 @@
   </div>
     
     <!-- About Section -->
-    <div class="card">
+    <div class="card" id="about">
       <h2>📌 About Me</h2>
       <p>I'm a <strong>first-class Civil Engineering graduate</strong> turned <strong>Data Analyst</strong> and <strong>AI/ML enthusiast</strong>. My journey is driven by a simple belief: data can solve real problems—especially in the communities where I live.</p>
       <p style="margin-top: 1rem;">As a <strong>3MTT Data Analytics Fellow</strong> and <strong>TechCrush AI/ML Scholar</strong>, I've been building solutions that bridge the gap between technical skills and community impact. I learn fast, build relentlessly, and tell stories through data.</p>
     </div>
 
     <!-- Featured Project: ESWaT -->
-    <div class="card">
+    <div class="card" id="projects">
       <h2>🚀 Featured Project: ESWaT</h2>
       <h3>Enugu Smart Waste Tracker</h3>
       <p>A real-time waste management web app helping ESWAMA track overflowing bins and open dumping sites in Enugu State.</p>
@@ -313,7 +433,7 @@
     </div>
 
     <!-- Skills & Tools -->
-    <div class="card">
+    <div class="card" id="skills">
       <h2>🛠️ Skills & Tools</h2>
       <div class="skills">
         <span class="skill-tag">Python</span>
@@ -329,8 +449,14 @@
       </div>
     </div>
 
+    <div class="card" id="blog">
+      <h2>📝 Blog & Insights</h2>
+      <p>Coming soon! I'll be sharing my journey, tech learnings, and thoughts on data, AI, and innovation.</p>
+    </div>
+  
+
     <!-- Contact -->
-    <div class="card">
+    <div class="card" id="contact">
       <h2>📬 Let's Connect</h2>
       <div class="contact-links">
         <a href="https://www.linkedin.com/in/chibueze-igiligi-15056a2a3" target="_blank">🔗 LinkedIn</a>
@@ -395,5 +521,26 @@
   // Start the typewriter effect
   typeEffect();
 </script>
+  // Dark Mode Toggle
+const darkModeToggle = document.getElementById('darkModeToggle');
+const body = document.body;
+
+// Check for saved preference
+if (localStorage.getItem('darkMode') === 'enabled') {
+  body.classList.add('dark-mode');
+  darkModeToggle.textContent = '☀️';
+}
+
+darkModeToggle.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+  
+  if (body.classList.contains('dark-mode')) {
+    localStorage.setItem('darkMode', 'enabled');
+    darkModeToggle.textContent = '☀️';
+  } else {
+    localStorage.setItem('darkMode', 'disabled');
+    darkModeToggle.textContent = '🌙';
+  }
+});
 </body>
 </html>
