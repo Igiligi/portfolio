@@ -8,135 +8,157 @@
   <style>
 
     /* Header Layout */
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
 
-.header-left {
-  flex: 1;
-}
+    .header-left {
+      flex: 1;
+    }
 
-.header-right {
-  display: flex;
-  align-items: center;
-}
+    .header-right {
+      display: flex;
+      align-items: center;
+    }
 
-/* Navigation Menu */
-.nav-menu {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-  flex-wrap: wrap;
-}
+    /* Navigation Menu */
+    .nav-menu {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-.nav-menu a {
-  text-decoration: none;
-  color: #1e293b;
-  font-weight: 500;
-  transition: color 0.2s;
-  font-size: 0.95rem;
-}
+    .nav-menu a {
+      text-decoration: none;
+      color: #1e293b;
+      font-weight: 500;
+      transition: color 0.2s;
+      font-size: 0.95rem;
+    }
 
-.nav-menu a:hover {
-  color: #075E54;
-}
+    .nav-menu a:hover {
+      color: #075E54;
+    }
 
-.contact-btn {
-  background: #075E54;
-  color: white !important;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  transition: background 0.2s;
-}
+    .contact-btn {
+      background: #075E54;
+      color: white !important;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
 
-.contact-btn:hover {
-  background: #128C7E;
-  color: white !important;
-}
+    .contact-btn:hover {
+      background: #128C7E;
+      color: white !important;
+    }
 
-/* Dark Mode Toggle Button */
-.dark-mode-btn {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 50%;
-  transition: background 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    /* Dark Mode Toggle Button */
+    .dark-mode-btn {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 50%;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.dark-mode-btn:hover {
-  background: rgba(0, 0, 0, 0.1);
-}
+    .dark-mode-btn:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
 
-/* Dark Mode Styles */
-body.dark-mode {
-  background: #1a1a2e;
-  color: #e2e8f0;
-}
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background: #1a1a2e;
+      color: #e2e8f0;
+    }
 
-body.dark-mode .card {
-  background: #2d2d44;
-  color: #e2e8f0;
-}
+    body.dark-mode .card {
+      background: #2d2d44;
+      color: #e2e8f0;
+    }
 
-body.dark-mode .nav-menu a {
-  color: #e2e8f0;
-}
+    body.dark-mode .nav-menu a {
+      color: #e2e8f0;
+    }
 
-body.dark-mode .nav-menu a:hover {
-  color: #25D366;
-}
+    body.dark-mode .nav-menu a:hover {
+      color: #25D366;
+    }
 
-body.dark-mode .contact-btn {
-  background: #25D366;
-  color: #1a1a2e !important;
-}
+    body.dark-mode .contact-btn {
+      background: #25D366;
+      color: #1a1a2e !important;
+    }
 
-body.dark-mode .dark-mode-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
+    body.dark-mode .dark-mode-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
 
-body.dark-mode .header {
-  background: rgba(26, 26, 46, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(37, 211, 102, 0.2);
-}
+    body.dark-mode .header {
+      background: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(37, 211, 102, 0.2);
+    }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .header-content {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .nav-menu {
-    justify-content: flex-start;
-    gap: 1rem;
-  }
-  
-  .nav-menu a {
-    font-size: 0.85rem;
-  }
-}
-      /* Typewriter Container */
+    body.dark-mode .skill-tag {
+      background: #3d3d5c;
+      color: #e2e8f0;
+    }
+
+    body.dark-mode .recognition-list li::before {
+      color: #25D366;
+    }
+
+    body.dark-mode .divider {
+      background: #25D366;
+    }
+
+    body.dark-mode .contact-links a {
+      color: #25D366;
+    }
+
+    body.dark-mode .footer {
+      border-top-color: #2d2d44;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .nav-menu {
+        justify-content: flex-start;
+        gap: 1rem;
+      }
+      
+      .nav-menu a {
+        font-size: 0.85rem;
+      }
+    }
+
+    /* Typewriter Container */
     .typewriter-container {
-    font-size: 1.5rem;
-    font-weight: 600;
-    min-height: 50px;
-    margin-bottom: 0.5rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 5px;
-    flex-wrap: wrap;
+      font-size: 1.5rem;
+      font-weight: 600;
+      min-height: 50px;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 5px;
+      flex-wrap: wrap;
     }
 
     #typewriter-text {
@@ -158,13 +180,14 @@ body.dark-mode .header {
       50% { opacity: 0; }
     }
 
-    /* Responsive */
+    /* Responsive Typewriter */
     @media (max-width: 768px) {
       .typewriter-container {
         font-size: 1.3rem;
         min-height: 60px;
       }
     }
+
     * {
       margin: 0;
       padding: 0;
@@ -182,7 +205,7 @@ body.dark-mode .header {
       max-width: 1000px;
       margin: 0 auto;
       padding: 1rem 1.5rem 2rem;
-      scroll-margin-top: 120px; /* Helps when linking to sections */
+      scroll-margin-top: 120px;
     }
 
     /* Header Section - Sticky */
@@ -191,11 +214,10 @@ body.dark-mode .header {
       margin-bottom: 1.5rem;
       position: sticky;
       top: 0;
-      background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+      background: rgba(245, 247, 250, 0.95);
+      backdrop-filter: blur(10px);
       padding: 0.5rem 0;
       z-index: 100;
-      backdrop-filter: blur(10px);
-      background: rgba(245, 247, 250, 0.95);
       border-bottom: 1px solid rgba(7, 94, 84, 0.1);
       transition: all 0.3s ease;
     }
@@ -394,7 +416,6 @@ body.dark-mode .header {
         </div>
       </div>
     </div>
-  </div>
     
     <!-- About Section -->
     <div class="card" id="about">
@@ -449,12 +470,12 @@ body.dark-mode .header {
       </div>
     </div>
 
+    <!-- Blog Section -->
     <div class="card" id="blog">
       <h2>📝 Blog & Insights</h2>
       <p>Coming soon! I'll be sharing my journey, tech learnings, and thoughts on data, AI, and innovation.</p>
     </div>
   
-
     <!-- Contact -->
     <div class="card" id="contact">
       <h2>📬 Let's Connect</h2>
@@ -471,6 +492,7 @@ body.dark-mode .header {
       <p style="margin-top: 0.5rem;">© 2026 Chibueze Igiligi | Built with 💚</p>
     </div>
   </div>
+
   <script>
   // Typewriter Effect
   const messages = [
@@ -489,58 +511,52 @@ body.dark-mode .header {
     const fullText = messages[messageIndex];
     
     if (isDeleting) {
-      // Deleting text
       currentText = fullText.substring(0, charIndex - 1);
       charIndex--;
     } else {
-      // Typing text
       currentText = fullText.substring(0, charIndex + 1);
       charIndex++;
     }
     
     typewriterElement.textContent = currentText;
     
-    // Determine speed
     let speed = isDeleting ? 50 : 100;
     
-    // If typing is complete
     if (!isDeleting && charIndex === fullText.length) {
       isDeleting = true;
-      speed = 1500; // Pause at the end of typing
+      speed = 1500;
     }
-    // If deleting is complete
     else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       messageIndex = (messageIndex + 1) % messages.length;
-      speed = 500; // Pause before typing next message
+      speed = 500;
     }
     
     setTimeout(typeEffect, speed);
   }
   
-  // Start the typewriter effect
   typeEffect();
-</script>
+
   // Dark Mode Toggle
-const darkModeToggle = document.getElementById('darkModeToggle');
-const body = document.body;
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  const body = document.body;
 
-// Check for saved preference
-if (localStorage.getItem('darkMode') === 'enabled') {
-  body.classList.add('dark-mode');
-  darkModeToggle.textContent = '☀️';
-}
-
-darkModeToggle.addEventListener('click', () => {
-  body.classList.toggle('dark-mode');
-  
-  if (body.classList.contains('dark-mode')) {
-    localStorage.setItem('darkMode', 'enabled');
+  if (localStorage.getItem('darkMode') === 'enabled') {
+    body.classList.add('dark-mode');
     darkModeToggle.textContent = '☀️';
-  } else {
-    localStorage.setItem('darkMode', 'disabled');
-    darkModeToggle.textContent = '🌙';
   }
-});
+
+  darkModeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    
+    if (body.classList.contains('dark-mode')) {
+      localStorage.setItem('darkMode', 'enabled');
+      darkModeToggle.textContent = '☀️';
+    } else {
+      localStorage.setItem('darkMode', 'disabled');
+      darkModeToggle.textContent = '🌙';
+    }
+  });
+  </script>
 </body>
 </html>
