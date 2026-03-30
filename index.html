@@ -221,7 +221,7 @@ html {
       color: white !important;
     }
 
-    /* iOS Style Toggle Switch - Added */
+    /* iOS Style Toggle Switch */
     .toggle-switch {
       position: relative;
       display: inline-flex;
@@ -403,6 +403,132 @@ html {
       border-top-color: #2d2d44;
     }
 
+    /* Stats Grid */
+    .stats-grid {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+
+    .stat-item {
+      flex: 1;
+      min-width: 100px;
+    }
+
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #075E54;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+
+    body.dark-mode .stat-number {
+      color: #25D366;
+    }
+
+    body.dark-mode .stat-label {
+      color: #a0aec0;
+    }
+
+    /* Project Screenshot */
+    .project-screenshot {
+      margin: 1rem 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+    }
+
+    .project-screenshot img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .screenshot-caption {
+      font-size: 0.75rem;
+      color: #64748b;
+      text-align: center;
+      padding: 0.5rem;
+      background: #f8fafc;
+    }
+
+    body.dark-mode .screenshot-caption {
+      background: #2d2d44;
+      color: #a0aec0;
+    }
+
+    /* Testimonial Section */
+    .testimonial {
+      font-style: italic;
+      padding: 1rem;
+      background: #f8fafc;
+      border-radius: 12px;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .testimonial:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .testimonial-author {
+      margin-top: 0.5rem;
+      font-style: normal;
+      font-weight: 600;
+      color: #075E54;
+    }
+
+    body.dark-mode .testimonial {
+      background: #3d3d5c;
+    }
+
+    body.dark-mode .testimonial-author {
+      color: #25D366;
+    }
+
+    /* Pulse Animation for Buttons */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .hero-btn.primary {
+      animation: pulse 2s infinite;
+    }
+
+    .hero-btn.primary:hover {
+      animation: none;
+    }
+
+    /* Card Glow on Hover */
+    .card {
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark-mode .card:hover {
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.1);
+    }
+
+    /* Body transitions for smooth dark mode */
+    body {
+      transition: background 0.3s, color 0.3s;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .header-content {
@@ -417,6 +543,18 @@ html {
       
       .nav-menu a {
         font-size: 0.85rem;
+      }
+
+      .stats-grid {
+        gap: 0.5rem;
+      }
+
+      .stat-number {
+        font-size: 1.4rem;
+      }
+
+      .stat-label {
+        font-size: 0.7rem;
       }
     }
 
@@ -711,6 +849,7 @@ html {
     <div class="hero-buttons">
       <a href="#projects" class="hero-btn primary">See My Work</a>
       <a href="#" class="hero-btn secondary">My Journey</a>
+      <a href="#" class="hero-btn secondary" download>📄 Download CV</a>
     </div>
   </div>
 </div>
@@ -726,10 +865,33 @@ html {
 <div class="card" id="projects">
   <h2>🚀 Featured Project: ESWaT</h2>
   <h3>Enugu Smart Waste Tracker</h3>
+  
+  <!-- Social Proof Counters -->
+  <div class="stats-grid">
+    <div class="stat-item">
+      <span class="stat-number">35+</span>
+      <span class="stat-label">Live Reports</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">1400+</span>
+      <span class="stat-label">LinkedIn Impressions</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">🏆</span>
+      <span class="stat-label">Challenge Winner</span>
+    </div>
+  </div>
+
+  <!-- ESWaT Screenshot -->
+  <div class="project-screenshot">
+    <img src="https://via.placeholder.com/800x400/075E54/ffffff?text=ESWaT+Dashboard+Screenshot" alt="ESWaT Dashboard Screenshot">
+    <p class="screenshot-caption">Live dashboard showing waste hotspots in Enugu State</p>
+  </div>
+
   <p>A real-time waste management web app helping ESWAMA track overflowing bins and open dumping sites in Enugu State.</p>
-  <p><strong>Impact:</strong> 35+ live reports, real-time sync between residents and officers</p>
+  <p><strong>Impact:</strong> Real-time sync between residents and officers</p>
   <p><strong>Tech:</strong> React, TypeScript, OpenStreetMap, Leaflet, Google Sheets, Google Apps Script</p>
-  <p><strong>Recognition:</strong> 🏆 WINNER of 3MTT NextGen Challenge, 1400+ LinkedIn impressions</p>
+  <p><strong>Recognition:</strong> 🏆 WINNER of 3MTT NextGen Challenge</p>
   <div>
     <a href="https://eswatapp.netlify.app" class="project-link" target="_blank">🔗 Live Demo</a>
     <a href="https://github.com/Igiligi/ESWaT-App" class="project-link secondary" target="_blank">🐙 GitHub (Private)</a>
@@ -764,6 +926,19 @@ html {
         <span class="skill-tag">Google Apps Script</span>
         <span class="skill-tag">Git/GitHub</span>
         <span class="skill-tag">Digital Marketing</span>
+      </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="card">
+      <h2>💬 What People Say</h2>
+      <div class="testimonial">
+        <p>"Chibueze built a functional waste management app in 2 weeks. His problem-solving skills and execution are impressive. He identified a real community problem and delivered a working solution."</p>
+        <p class="testimonial-author">— 3MTT Program Mentor</p>
+      </div>
+      <div class="testimonial">
+        <p>"A first-class graduate who doesn't just learn but builds. His dedication to solving real problems in Enugu through data is inspiring."</p>
+        <p class="testimonial-author">— ForeTrust Facilitator</p>
       </div>
     </div>
 
