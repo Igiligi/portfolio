@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Chibueze Igiligi | Data Analyst & AI/ML Enthusiast</title>
   
   <style>
 
 /* Hero Section */
 .hero {
-  min-height: 60vh;
+  min-height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 3rem;
-  padding: 2rem 0;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
 }
 
 .hero-content {
@@ -24,43 +24,44 @@
 }
 
 .hero-greeting {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: 800;
   color: #075E54;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   line-height: 1.2;
 }
 
 .hero-description {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #128C7E;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .hero-sub-description {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #64748b;
   max-width: 600px;
-  margin: 0 auto 2rem;
-  line-height: 1.6;
+  margin: 0 auto 1.5rem;
+  line-height: 1.5;
 }
 
 .hero-buttons {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .hero-btn {
   display: inline-block;
-  padding: 0.8rem 2rem;
+  padding: 0.6rem 1.5rem;
   border-radius: 8px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
   cursor: pointer;
+  font-size: 0.9rem;
 }
 
 .hero-btn.primary {
@@ -111,26 +112,26 @@ body.dark-mode .hero-btn.secondary:hover {
 /* Responsive Hero */
 @media (max-width: 768px) {
   .hero {
-    min-height: 50vh;
-    padding: 1.5rem 0;
+    min-height: auto;
+    padding: 1rem 0;
   }
   
   .hero-greeting {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
   .hero-description {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   
   .hero-sub-description {
-    font-size: 0.95rem;
-    padding: 0 1rem;
+    font-size: 0.85rem;
+    padding: 0 0.5rem;
   }
   
   .hero-btn {
-    padding: 0.6rem 1.5rem;
-    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
   }
 }
     
@@ -140,667 +141,638 @@ html {
 }
 
 /* Prevent content from hiding behind sticky header */
-.card {
-  scroll-margin-top: 100px;
+section, .card {
+  scroll-margin-top: 80px;
 }
 
-/* Mobile adjustments */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+  color: #1e293b;
+  line-height: 1.6;
+  padding-bottom: 70px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0.5rem 1rem 1rem;
+}
+
+/* Header Section - Sticky (Desktop only) */
+.header {
+  text-align: left;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  background: rgba(245, 247, 250, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(7, 94, 84, 0.1);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header-left {
+  flex: 1;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.desktop-nav a {
+  text-decoration: none;
+  color: #1e293b;
+  font-weight: 500;
+  transition: color 0.2s;
+  font-size: 0.9rem;
+}
+
+.desktop-nav a:hover {
+  color: #075E54;
+}
+
+/* iOS Style Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggle-slider {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+  background-color: #cbd5e1;
+  border-radius: 34px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.toggle-slider:before {
+  content: "";
+  position: absolute;
+  height: 22px;
+  width: 22px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+input:checked + .toggle-slider {
+  background-color: #075E54;
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(24px);
+}
+
+/* WhatsApp Bottom Navigation - Mobile Only */
+.bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 12px;
+  border-top: 1px solid #e2e8f0;
+  z-index: 1000;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: #64748b;
+  font-size: 0.7rem;
+  font-weight: 500;
+  transition: color 0.2s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.bottom-nav-item.active {
+  color: #075E54;
+}
+
+.bottom-nav-item span:first-child {
+  font-size: 1.3rem;
+}
+
+/* Mobile Menu Toggle Button */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.mobile-menu-btn:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* Mobile Menu Drawer */
+.mobile-drawer {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 280px;
+  height: 100%;
+  background: white;
+  z-index: 2000;
+  transition: right 0.3s ease;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  padding: 2rem 1rem;
+}
+
+.mobile-drawer.open {
+  right: 0;
+}
+
+.drawer-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1999;
+}
+
+.drawer-overlay.open {
+  display: block;
+}
+
+.drawer-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  float: right;
+  margin-bottom: 1rem;
+}
+
+.drawer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+  clear: both;
+}
+
+.drawer-nav a {
+  text-decoration: none;
+  color: #1e293b;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.drawer-nav a:hover {
+  color: #075E54;
+}
+
+/* Typewriter Container */
+.typewriter-container {
+  font-size: 1.2rem;
+  font-weight: 600;
+  min-height: 40px;
+  margin-bottom: 0.25rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+#typewriter-text {
+  color: #075E54;
+  text-align: left;
+  display: inline-block;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  animation: blink 0.7s infinite;
+  font-weight: 100;
+  color: #128C7E;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background: #1a1a2e;
+  color: #e2e8f0;
+}
+
+body.dark-mode .card {
+  background: #2d2d44;
+  color: #e2e8f0;
+}
+
+body.dark-mode .desktop-nav a {
+  color: #e2e8f0;
+}
+
+body.dark-mode .desktop-nav a:hover {
+  color: #25D366;
+}
+
+body.dark-mode .contact-btn {
+  background: #25D366;
+  color: #1a1a2e !important;
+}
+
+body.dark-mode .header {
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(37, 211, 102, 0.2);
+}
+
+body.dark-mode .skill-tag {
+  background: #3d3d5c;
+  color: #e2e8f0;
+}
+
+body.dark-mode .recognition-list li::before {
+  color: #25D366;
+}
+
+body.dark-mode .contact-links a {
+  color: #25D366;
+}
+
+body.dark-mode .footer {
+  border-top-color: #2d2d44;
+}
+
+body.dark-mode .bottom-nav {
+  background: #1a1a2e;
+  border-top-color: #2d2d44;
+}
+
+body.dark-mode .bottom-nav-item {
+  color: #a0aec0;
+}
+
+body.dark-mode .bottom-nav-item.active {
+  color: #25D366;
+}
+
+body.dark-mode .testimonial {
+  background: #3d3d5c;
+}
+
+body.dark-mode .testimonial-author {
+  color: #25D366;
+}
+
+/* Card Style */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  scroll-margin-top: 80px;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  color: #075E54;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card h3 {
+  color: #128C7E;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Project Section */
+.project-link {
+  display: inline-block;
+  background: #075E54;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  font-weight: 600;
+  transition: background 0.2s;
+  font-size: 0.85rem;
+}
+
+.project-link:hover {
+  background: #128C7E;
+}
+
+.project-link.secondary {
+  background: #334155;
+}
+
+.project-link.secondary:hover {
+  background: #475569;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.stat-item {
+  flex: 1;
+  min-width: 80px;
+}
+
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #075E54;
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: #64748b;
+}
+
+body.dark-mode .stat-number {
+  color: #25D366;
+}
+
+/* Project Screenshot */
+.project-screenshot {
+  margin: 0.75rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.project-screenshot img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.screenshot-caption {
+  font-size: 0.7rem;
+  color: #64748b;
+  text-align: center;
+  padding: 0.5rem;
+  background: #f8fafc;
+}
+
+/* Skills & Tools */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.skill-tag {
+  background: #e2e8f0;
+  color: #1e293b;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Recognition List */
+.recognition-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.recognition-list li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.recognition-list li::before {
+  content: "✓";
+  color: #075E54;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Testimonial */
+.testimonial {
+  font-style: italic;
+  padding: 0.75rem;
+  background: #f8fafc;
+  border-radius: 12px;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.testimonial-author {
+  margin-top: 0.5rem;
+  font-style: normal;
+  font-weight: 600;
+  color: #075E54;
+  font-size: 0.8rem;
+}
+
+/* Contact Section */
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #075E54;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+  font-size: 0.9rem;
+}
+
+.contact-links a:hover {
+  color: #128C7E;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1rem 0;
+  color: #64748b;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
+  .container {
+    padding: 0.5rem 0.75rem 0.75rem;
+  }
+  
+  .desktop-nav {
+    display: none;
+  }
+  
+  .mobile-menu-btn {
+    display: block;
+  }
+  
   .card {
-    scroll-margin-top: 180px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .card h2 {
+    font-size: 1.2rem;
+  }
+  
+  .skills {
+    gap: 0.4rem;
+  }
+  
+  .skill-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+  
+  .recognition-list li {
+    font-size: 0.8rem;
+  }
+  
+  .bottom-nav {
+    display: flex;
+  }
+  
+  body {
+    padding-bottom: 70px;
   }
   
   .header {
-    padding: 0.75rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
   
-  .nav-menu {
-    margin-top: 0.75rem;
-    gap: 0.75rem;
+  .typewriter-container {
+    font-size: 0.9rem;
+    min-height: 35px;
+  }
+  
+  .stats-grid {
+    gap: 0.5rem;
+  }
+  
+  .stat-number {
+    font-size: 1.2rem;
+  }
+  
+  .stat-label {
+    font-size: 0.6rem;
   }
 }
-    
-     /* SMOOTH SCROLLING */
-        html {
-          scroll-behavior: smooth;
-        }
-    
-        /* FIX CONTENT HIDING BEHIND HEADER */
-        .card {
-          scroll-margin-top: 100px;
-        }
-    
-    /* Header Layout */
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
 
-    .header-left {
-      flex: 1;
-    }
+/* Desktop contact button */
+.contact-btn {
+  background: #075E54;
+  color: white !important;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+  font-size: 0.85rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-btn:hover {
+  background: #128C7E;
+  color: white !important;
+}
+
+body.dark-mode .contact-btn {
+  background: #25D366;
+  color: #1a1a2e !important;
+}
 
-    .header-right {
-      display: flex;
-      align-items: center;
-    }
-
-    /* Navigation Menu */
-    .nav-menu {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .nav-menu a {
-      text-decoration: none;
-      color: #1e293b;
-      font-weight: 500;
-      transition: color 0.2s;
-      font-size: 0.95rem;
-    }
-
-    .nav-menu a:hover {
-      color: #075E54;
-    }
-
-    .contact-btn {
-      background: #075E54;
-      color: white !important;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      transition: background 0.2s;
-    }
-
-    .contact-btn:hover {
-      background: #128C7E;
-      color: white !important;
-    }
-
-    /* iOS Style Toggle Switch */
-    .toggle-switch {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-    }
-
-    .toggle-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-      position: absolute;
-    }
-
-    .toggle-slider {
-      position: relative;
-      display: inline-block;
-      width: 50px;
-      height: 26px;
-      background-color: #cbd5e1;
-      border-radius: 34px;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-
-    .toggle-slider:before {
-      content: "";
-      position: absolute;
-      height: 22px;
-      width: 22px;
-      left: 2px;
-      bottom: 2px;
-      background-color: white;
-      border-radius: 50%;
-      transition: 0.3s;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    }
-
-    input:checked + .toggle-slider {
-      background-color: #075E54;
-    }
-
-    input:checked + .toggle-slider:before {
-      transform: translateX(24px);
-    }
-
-    .toggle-label {
-      font-size: 1rem;
-    }
-
-    /* Small Toggle for Mobile Menu */
-    .toggle-switch-small {
-      position: relative;
-      display: inline-block;
-      width: 40px;
-      height: 20px;
-      cursor: pointer;
-    }
-
-    .toggle-switch-small input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-      position: absolute;
-    }
-
-    .toggle-slider-small {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #cbd5e1;
-      border-radius: 34px;
-      transition: 0.3s;
-    }
-
-    .toggle-slider-small:before {
-      content: "";
-      position: absolute;
-      height: 16px;
-      width: 16px;
-      left: 2px;
-      bottom: 2px;
-      background-color: white;
-      border-radius: 50%;
-      transition: 0.3s;
-    }
-
-    input:checked + .toggle-slider-small {
-      background-color: #075E54;
-    }
-
-    input:checked + .toggle-slider-small:before {
-      transform: translateX(20px);
-    }
-
-    .toggle-menu-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-    }
-
-    .toggle-label-text {
-      font-size: 0.9rem;
-      color: #1e293b;
-    }
-
-    body.dark-mode .toggle-label-text {
-      color: #e2e8f0;
-    }
-
-    /* Hide mobile toggle on desktop, hide desktop toggle on mobile */
-    @media (min-width: 769px) {
-      .toggle-menu-item {
-        display: none;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .desktop-toggle {
-        display: none;
-      }
-      .toggle-menu-item {
-        display: flex;
-      }
-    }
-
-    /* Dark Mode Styles */
-    body.dark-mode {
-      background: #1a1a2e;
-      color: #e2e8f0;
-    }
-
-    body.dark-mode .card {
-      background: #2d2d44;
-      color: #e2e8f0;
-    }
-
-    body.dark-mode .nav-menu a {
-      color: #e2e8f0;
-    }
-
-    body.dark-mode .nav-menu a:hover {
-      color: #25D366;
-    }
-
-    body.dark-mode .contact-btn {
-      background: #25D366;
-      color: #1a1a2e !important;
-    }
-
-    body.dark-mode .header {
-      background: rgba(26, 26, 46, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(37, 211, 102, 0.2);
-    }
-
-    body.dark-mode .skill-tag {
-      background: #3d3d5c;
-      color: #e2e8f0;
-    }
-
-    body.dark-mode .recognition-list li::before {
-      color: #25D366;
-    }
-
-    body.dark-mode .divider {
-      background: #25D366;
-    }
-
-    body.dark-mode .contact-links a {
-      color: #25D366;
-    }
-
-    body.dark-mode .footer {
-      border-top-color: #2d2d44;
-    }
-
-    /* Stats Grid */
-    .stats-grid {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin: 1.5rem 0;
-      text-align: center;
-    }
-
-    .stat-item {
-      flex: 1;
-      min-width: 100px;
-    }
-
-    .stat-number {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: #075E54;
-      display: block;
-    }
-
-    .stat-label {
-      font-size: 0.8rem;
-      color: #64748b;
-    }
-
-    body.dark-mode .stat-number {
-      color: #25D366;
-    }
-
-    body.dark-mode .stat-label {
-      color: #a0aec0;
-    }
-
-    /* Project Screenshot */
-    .project-screenshot {
-      margin: 1rem 0;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid #e2e8f0;
-    }
-
-    .project-screenshot img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .screenshot-caption {
-      font-size: 0.75rem;
-      color: #64748b;
-      text-align: center;
-      padding: 0.5rem;
-      background: #f8fafc;
-    }
-
-    body.dark-mode .screenshot-caption {
-      background: #2d2d44;
-      color: #a0aec0;
-    }
-
-    /* Testimonial Section */
-    .testimonial {
-      font-style: italic;
-      padding: 1rem;
-      background: #f8fafc;
-      border-radius: 12px;
-      margin-top: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .testimonial:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-
-    .testimonial-author {
-      margin-top: 0.5rem;
-      font-style: normal;
-      font-weight: 600;
-      color: #075E54;
-    }
-
-    body.dark-mode .testimonial {
-      background: #3d3d5c;
-    }
-
-    body.dark-mode .testimonial-author {
-      color: #25D366;
-    }
-
-    /* Pulse Animation for Buttons */
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
-    .hero-btn.primary {
-      animation: pulse 2s infinite;
-    }
-
-    .hero-btn.primary:hover {
-      animation: none;
-    }
-
-    /* Card Glow on Hover */
-    .card {
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    body.dark-mode .card:hover {
-      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.1);
-    }
-
-    /* Body transitions for smooth dark mode */
-    body {
-      transition: background 0.3s, color 0.3s;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .header-content {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      
-      .nav-menu {
-        justify-content: flex-start;
-        gap: 1rem;
-      }
-      
-      .nav-menu a {
-        font-size: 0.85rem;
-      }
-
-      .stats-grid {
-        gap: 0.5rem;
-      }
-
-      .stat-number {
-        font-size: 1.4rem;
-      }
-
-      .stat-label {
-        font-size: 0.7rem;
-      }
-    }
-
-    /* Typewriter Container */
-    .typewriter-container {
-      font-size: 1.5rem;
-      font-weight: 600;
-      min-height: 50px;
-      margin-bottom: 0.5rem;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 5px;
-      flex-wrap: wrap;
-    }
-
-    #typewriter-text {
-      color: #075E54;
-      text-align: left;
-      display: inline-block;
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 3px;
-      animation: blink 0.7s infinite;
-      font-weight: 100;
-      color: #128C7E;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    /* Responsive Typewriter */
-    @media (max-width: 768px) {
-      .typewriter-container {
-        font-size: 1.3rem;
-        min-height: 60px;
-      }
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
-      color: #1e293b;
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem 2rem;
-      scroll-margin-top: 120px;
-    }
-
-    /* Header Section - Sticky */
-    .header {
-      text-align: left;
-      margin-bottom: 1.5rem;
-      position: sticky;
-      top: 0;
-      background: rgba(245, 247, 250, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 0.5rem 0;
-      z-index: 100;
-      border-bottom: 1px solid rgba(7, 94, 84, 0.1);
-      transition: all 0.3s ease;
-    }
-
-    .header h1 {
-      font-size: 3rem;
-      color: #075E54;
-      margin-bottom: 0.5rem;
-    }
-
-    .header .tagline {
-      font-size: 1.2rem;
-      color: #128C7E;
-      margin-bottom: 1rem;
-    }
-
-    .header .location {
-      color: #64748b;
-      margin-bottom: 1.5rem;
-    }
-
-    .divider {
-      width: 80px;
-      height: 3px;
-      background: #075E54;
-      margin: 1rem auto;
-      border-radius: 2px;
-    }
-
-    /* Card Style */
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s, box-shadow 0.2s;
-      scroll-margin-top: 100px;
-    }
-
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .card h2 {
-      color: #075E54;
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .card h3 {
-      color: #128C7E;
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-    }
-
-    /* Project Section */
-    .project-link {
-      display: inline-block;
-      background: #075E54;
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border-radius: 8px;
-      text-decoration: none;
-      margin-top: 1rem;
-      margin-right: 1rem;
-      font-weight: 600;
-      transition: background 0.2s;
-    }
-
-    .project-link:hover {
-      background: #128C7E;
-    }
-
-    .project-link.secondary {
-      background: #334155;
-    }
-
-    .project-link.secondary:hover {
-      background: #475569;
-    }
-
-    /* Skills & Tools */
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 1rem;
-    }
-
-    .skill-tag {
-      background: #e2e8f0;
-      color: #1e293b;
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-
-    /* Recognition List */
-    .recognition-list {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .recognition-list li {
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .recognition-list li::before {
-      content: "✓";
-      color: #075E54;
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-
-    /* Contact Section */
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-      margin-top: 1rem;
-    }
-
-    .contact-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #075E54;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.2s;
-    }
-
-    .contact-links a:hover {
-      color: #128C7E;
-    }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      padding: 2rem 0 1rem;
-      color: #64748b;
-      font-size: 0.85rem;
-      border-top: 1px solid #e2e8f0;
-      margin-top: 1rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .container {
-        padding: 1rem;
-      }
-      .header h1 {
-        font-size: 2rem;
-      }
-      .card {
-        padding: 1.5rem;
-      }
-      .contact-links {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.8rem;
-      }
-    }
   </style>
   
 </head>
@@ -816,36 +788,48 @@ html {
           </div>
         </div>
         <div class="header-right">
-          <nav class="nav-menu">
+          <nav class="desktop-nav">
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
             <a href="#blog">Blog</a>
-            <!-- iOS Toggle Switch (Desktop) -->
-            <label class="toggle-switch desktop-toggle" title="Light / Dark Mode">
+            <label class="toggle-switch" title="Light / Dark Mode">
               <input type="checkbox" id="darkModeToggle">
               <span class="toggle-slider"></span>
             </label>
-            <a href="#contact" class="contact-btn">Contact Me ↗</a>
-            <!-- Mobile toggle item (hidden on desktop) -->
-            <div class="toggle-menu-item">
-              <span class="toggle-label-text">Dark Mode</span>
-              <label class="toggle-switch-small">
-                <input type="checkbox" id="darkModeToggleMobile">
-                <span class="toggle-slider-small"></span>
-              </label>
-            </div>
+            <a href="#contact" class="contact-btn">Contact</a>
           </nav>
+          <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
         </div>
       </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <div class="mobile-drawer" id="mobileDrawer">
+      <button class="drawer-close" id="drawerClose">✕</button>
+      <nav class="drawer-nav">
+        <a href="#about" class="drawer-link">About</a>
+        <a href="#projects" class="drawer-link">Projects</a>
+        <a href="#skills" class="drawer-link">Skills</a>
+        <a href="#blog" class="drawer-link">Blog</a>
+        <a href="#contact" class="drawer-link">Contact</a>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+          <span>Dark Mode</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="darkModeToggleMobile">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </nav>
     </div>
 
 <!-- Hero Section -->
 <div class="hero">
   <div class="hero-content">
-    <h1 class="hero-greeting">Hi, I'm Chibueze Igiligi</h1>
+    <h1 class="hero-greeting">Chibueze Igiligi</h1>
     <p class="hero-description">First-Class Civil Engineer. Data Analyst. Community Problem Solver.</p>
-    <p class="hero-sub-description">I build data-driven solutions that matter. From tracking waste in Enugu with ESWaT to transforming complex data into clear insights, I believe technology should serve people (especially in the communities where I live). Currently a 3MTT Data Analytics Fellow, TechCrush AI/ML Scholar, and NJFP Fellow.</p>
+    <p class="hero-sub-description">I build data-driven solutions that matter. From tracking waste in Enugu with ESWaT to transforming complex data into clear insights, I believe technology should serve people (especially in the communities where I live).</p>
     <div class="hero-buttons">
       <a href="#projects" class="hero-btn primary">See My Work</a>
       <a href="#" class="hero-btn secondary">My Journey</a>
@@ -858,7 +842,7 @@ html {
     <div class="card" id="about">
       <h2>📌 About Me</h2>
       <p>I'm a <strong>first-class Civil Engineering graduate</strong>, <strong>Data Analyst</strong> and <strong>AI/ML enthusiast</strong>. My journey is driven by a simple belief: data can solve real problems (especially in the communities where I live).</p>
-      <p style="margin-top: 1rem;">As a <strong>3MTT Data Analytics Fellow</strong>, <strong>TechCrush AI/ML Scholar</strong> and <strong>NJFP Fellow</strong> I've been building solutions that bridge the gap between technical skills and community impact. I learn fast, build relentlessly, and tell stories through data.</p>
+      <p style="margin-top: 0.75rem;">As a <strong>3MTT Data Analytics Fellow</strong>, <strong>TechCrush AI/ML Scholar</strong> and <strong>NJFP Fellow</strong> I've been building solutions that bridge the gap between technical skills and community impact. I learn fast, build relentlessly, and tell stories through data.</p>
     </div>
 
     <!-- Featured Project: ESWaT -->
@@ -889,7 +873,6 @@ html {
   </div>
 
   <p>A real-time waste management web app helping ESWAMA track overflowing bins and open dumping sites in Enugu State.</p>
-  <p><strong>Impact:</strong> Real-time sync between residents and officers</p>
   <p><strong>Tech:</strong> React, TypeScript, OpenStreetMap, Leaflet, Google Sheets, Google Apps Script</p>
   <p><strong>Recognition:</strong> 🏆 WINNER of 3MTT NextGen Challenge</p>
   <div>
@@ -933,12 +916,12 @@ html {
     <div class="card">
       <h2>💬 What People Say</h2>
       <div class="testimonial">
-        <p>"Chibueze built a functional waste management app in 2 weeks. His problem-solving skills and execution are impressive. He identified a real community problem and delivered a working solution."</p>
+        <p>"Chibueze built a functional waste management app in 7 days. His problem-solving skills and execution are impressive. He identified a real community problem and delivered a working solution."</p>
         <p class="testimonial-author">— 3MTT Program Mentor</p>
       </div>
       <div class="testimonial">
         <p>"A first-class graduate who doesn't just learn but builds. His dedication to solving real problems in Enugu through data is inspiring."</p>
-        <p class="testimonial-author">— ForeTrust Facilitator</p>
+        <p class="testimonial-author">— TechCrush Facilitator</p>
       </div>
     </div>
 
@@ -961,8 +944,32 @@ html {
     <!-- Footer -->
     <div class="footer">
       <p>“Your current reality is not your final destination.” — Chibueze Igiligi</p>
-      <p style="margin-top: 0.5rem;">© 2026 Chibueze Igiligi | Built with 💚</p>
+      <p style="margin-top: 0.25rem;">© 2026 Chibueze Igiligi | Built with 💚</p>
     </div>
+  </div>
+
+  <!-- WhatsApp Bottom Navigation (Mobile Only) -->
+  <div class="bottom-nav">
+    <a href="#about" class="bottom-nav-item" data-nav="about">
+      <span>🏠</span>
+      <span>About</span>
+    </a>
+    <a href="#projects" class="bottom-nav-item" data-nav="projects">
+      <span>🚀</span>
+      <span>Projects</span>
+    </a>
+    <a href="#skills" class="bottom-nav-item" data-nav="skills">
+      <span>🛠️</span>
+      <span>Skills</span>
+    </a>
+    <a href="#blog" class="bottom-nav-item" data-nav="blog">
+      <span>📝</span>
+      <span>Blog</span>
+    </a>
+    <a href="#contact" class="bottom-nav-item" data-nav="contact">
+      <span>📬</span>
+      <span>Contact</span>
+    </a>
   </div>
 
   <script>
@@ -1014,19 +1021,16 @@ html {
   const darkModeToggleMobile = document.getElementById('darkModeToggleMobile');
   const body = document.body;
 
-  // Function to update both toggles
   function updateToggles(isDark) {
     if (darkModeToggle) darkModeToggle.checked = isDark;
     if (darkModeToggleMobile) darkModeToggleMobile.checked = isDark;
   }
 
-  // Check for saved preference
   if (localStorage.getItem('darkMode') === 'enabled') {
     body.classList.add('dark-mode');
     updateToggles(true);
   }
 
-  // Function to toggle dark mode
   function toggleDarkMode(enabled) {
     if (enabled) {
       body.classList.add('dark-mode');
@@ -1038,7 +1042,6 @@ html {
     updateToggles(enabled);
   }
 
-  // Add event listeners
   if (darkModeToggle) {
     darkModeToggle.addEventListener('change', (e) => {
       toggleDarkMode(e.target.checked);
@@ -1050,6 +1053,60 @@ html {
       toggleDarkMode(e.target.checked);
     });
   }
+
+  // Mobile Drawer Menu
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileDrawer = document.getElementById('mobileDrawer');
+  const drawerOverlay = document.getElementById('drawerOverlay');
+  const drawerClose = document.getElementById('drawerClose');
+  const drawerLinks = document.querySelectorAll('.drawer-link');
+
+  function openDrawer() {
+    mobileDrawer.classList.add('open');
+    drawerOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    mobileDrawer.classList.remove('open');
+    drawerOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openDrawer);
+  if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+  if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+  drawerLinks.forEach(link => {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  // Bottom Navigation Active State
+  const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
+  
+  function setActiveNav() {
+    const sections = ['about', 'projects', 'skills', 'blog', 'contact'];
+    let current = '';
+    const scrollPos = window.scrollY + 150;
+    
+    for (const section of sections) {
+      const element = document.getElementById(section);
+      if (element && scrollPos >= element.offsetTop) {
+        current = section;
+      }
+    }
+    
+    bottomNavItems.forEach(item => {
+      const navTarget = item.getAttribute('data-nav');
+      if (navTarget === current) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', setActiveNav);
+  window.addEventListener('load', setActiveNav);
   </script>
 </body>
 </html>
