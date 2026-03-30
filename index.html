@@ -221,22 +221,135 @@ html {
       color: white !important;
     }
 
-    /* Dark Mode Toggle Button */
-    .dark-mode-btn {
-      background: none;
-      border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-      padding: 0.5rem;
-      border-radius: 50%;
-      transition: background 0.2s;
-      display: flex;
+    /* iOS Style Toggle Switch - Added */
+    .toggle-switch {
+      position: relative;
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
+      gap: 0.5rem;
+      cursor: pointer;
     }
 
-    .dark-mode-btn:hover {
-      background: rgba(0, 0, 0, 0.1);
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+
+    .toggle-slider {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 26px;
+      background-color: #cbd5e1;
+      border-radius: 34px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .toggle-slider:before {
+      content: "";
+      position: absolute;
+      height: 22px;
+      width: 22px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      border-radius: 50%;
+      transition: 0.3s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    input:checked + .toggle-slider {
+      background-color: #075E54;
+    }
+
+    input:checked + .toggle-slider:before {
+      transform: translateX(24px);
+    }
+
+    .toggle-label {
+      font-size: 1rem;
+    }
+
+    /* Small Toggle for Mobile Menu */
+    .toggle-switch-small {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    .toggle-switch-small input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+
+    .toggle-slider-small {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #cbd5e1;
+      border-radius: 34px;
+      transition: 0.3s;
+    }
+
+    .toggle-slider-small:before {
+      content: "";
+      position: absolute;
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+
+    input:checked + .toggle-slider-small {
+      background-color: #075E54;
+    }
+
+    input:checked + .toggle-slider-small:before {
+      transform: translateX(20px);
+    }
+
+    .toggle-menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .toggle-label-text {
+      font-size: 0.9rem;
+      color: #1e293b;
+    }
+
+    body.dark-mode .toggle-label-text {
+      color: #e2e8f0;
+    }
+
+    /* Hide mobile toggle on desktop, hide desktop toggle on mobile */
+    @media (min-width: 769px) {
+      .toggle-menu-item {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .desktop-toggle {
+        display: none;
+      }
+      .toggle-menu-item {
+        display: flex;
+      }
     }
 
     /* Dark Mode Styles */
@@ -261,10 +374,6 @@ html {
     body.dark-mode .contact-btn {
       background: #25D366;
       color: #1a1a2e !important;
-    }
-
-    body.dark-mode .dark-mode-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
     }
 
     body.dark-mode .header {
@@ -574,8 +683,20 @@ html {
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
             <a href="#blog">Blog</a>
-            <button id="darkModeToggle" class="dark-mode-btn">🌙</button>
+            <!-- iOS Toggle Switch (Desktop) -->
+            <label class="toggle-switch desktop-toggle" title="Light / Dark Mode">
+              <input type="checkbox" id="darkModeToggle">
+              <span class="toggle-slider"></span>
+            </label>
             <a href="#contact" class="contact-btn">Contact Me ↗</a>
+            <!-- Mobile toggle item (hidden on desktop) -->
+            <div class="toggle-menu-item">
+              <span class="toggle-label-text">Dark Mode</span>
+              <label class="toggle-switch-small">
+                <input type="checkbox" id="darkModeToggleMobile">
+                <span class="toggle-slider-small"></span>
+              </label>
+            </div>
           </nav>
         </div>
       </div>
@@ -608,7 +729,7 @@ html {
   <p>A real-time waste management web app helping ESWAMA track overflowing bins and open dumping sites in Enugu State.</p>
   <p><strong>Impact:</strong> 35+ live reports, real-time sync between residents and officers</p>
   <p><strong>Tech:</strong> React, TypeScript, OpenStreetMap, Leaflet, Google Sheets, Google Apps Script</p>
-  <p><strong>Recognition:<strong>🏆 WINNER of 3MTT NextGen Challenge</strong>, </strong> 1400+ LinkedIn impressions</p>
+  <p><strong>Recognition:</strong> 🏆 WINNER of 3MTT NextGen Challenge, 1400+ LinkedIn impressions</p>
   <div>
     <a href="https://eswatapp.netlify.app" class="project-link" target="_blank">🔗 Live Demo</a>
     <a href="https://github.com/Igiligi/ESWaT-App" class="project-link secondary" target="_blank">🐙 GitHub (Private)</a>
@@ -713,26 +834,47 @@ html {
   
   typeEffect();
 
-  // Dark Mode Toggle
+  // Dark Mode Toggle – Sync both switches
   const darkModeToggle = document.getElementById('darkModeToggle');
+  const darkModeToggleMobile = document.getElementById('darkModeToggleMobile');
   const body = document.body;
 
-  if (localStorage.getItem('darkMode') === 'enabled') {
-    body.classList.add('dark-mode');
-    darkModeToggle.textContent = '☀️';
+  // Function to update both toggles
+  function updateToggles(isDark) {
+    if (darkModeToggle) darkModeToggle.checked = isDark;
+    if (darkModeToggleMobile) darkModeToggleMobile.checked = isDark;
   }
 
-  darkModeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    
-    if (body.classList.contains('dark-mode')) {
+  // Check for saved preference
+  if (localStorage.getItem('darkMode') === 'enabled') {
+    body.classList.add('dark-mode');
+    updateToggles(true);
+  }
+
+  // Function to toggle dark mode
+  function toggleDarkMode(enabled) {
+    if (enabled) {
+      body.classList.add('dark-mode');
       localStorage.setItem('darkMode', 'enabled');
-      darkModeToggle.textContent = '☀️';
     } else {
+      body.classList.remove('dark-mode');
       localStorage.setItem('darkMode', 'disabled');
-      darkModeToggle.textContent = '🌙';
     }
-  });
+    updateToggles(enabled);
+  }
+
+  // Add event listeners
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener('change', (e) => {
+      toggleDarkMode(e.target.checked);
+    });
+  }
+
+  if (darkModeToggleMobile) {
+    darkModeToggleMobile.addEventListener('change', (e) => {
+      toggleDarkMode(e.target.checked);
+    });
+  }
   </script>
 </body>
 </html>
