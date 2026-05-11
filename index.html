@@ -605,6 +605,67 @@ body.dark-mode .stat-number {
   background: #f8fafc;
 }
 
+/* Certifications Grid */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cert-card {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.cert-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.cert-card img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+}
+
+.cert-card h4 {
+  color: #075E54;
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+}
+
+.cert-card p {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.cert-card .issuer {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #128C7E;
+}
+
+body.dark-mode .cert-card {
+  background: #3d3d5c;
+  border-color: #2d2d44;
+}
+
+body.dark-mode .cert-card h4 {
+  color: #25D366;
+}
+
+body.dark-mode .cert-card p {
+  color: #a0aec0;
+}
+
 /* Skills & Tools */
 .skills {
   display: flex;
@@ -777,6 +838,10 @@ body.dark-mode .contact-btn {
   .stat-label {
     font-size: 0.6rem;
   }
+  
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
   </style>
@@ -798,6 +863,7 @@ body.dark-mode .contact-btn {
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
+            <a href="#certifications">Certifications</a>
             <a href="#blog">Blog</a>
             <label class="toggle-switch" title="Light / Dark Mode">
               <input type="checkbox" id="darkModeToggle">
@@ -818,6 +884,7 @@ body.dark-mode .contact-btn {
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
         <a href="#blog">Blog</a>
         <a href="#contact">Contact</a>
         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; padding-top: 0.5rem; border-top: 1px solid #e2e8f0;">
@@ -834,8 +901,8 @@ body.dark-mode .contact-btn {
 <div class="hero">
   <div class="hero-content">
     <h1 class="hero-greeting">Hi, I'm Chibueze Igiligi</h1>
-    <p class="hero-description">First-Class Civil Engineer. Data Analyst. Community Problem Solver.</p>
-    <p class="hero-sub-description">I build data-driven solutions that matter. From tracking waste in Enugu with ESWaT to transforming complex data into clear insights, I believe technology should serve people (especially in the communities where I live).</p>
+    <p class="hero-description">Data Analyst, AI. First-Class Civil Engineer. Community Problem Solver.</p>
+    <p class="hero-sub-description">I build data-driven solutions that matter. From tracking waste in Enugu with ESWaT to transforming complex data into clear insights, I believe technology should serve people all around the world.</p>
     <div class="hero-buttons">
       <a href="#projects" class="hero-btn primary">See My Work</a>
       <a href="#" class="hero-btn secondary">My Journey</a>
@@ -874,9 +941,9 @@ body.dark-mode .contact-btn {
 
   <!-- ESWaT Screenshot -->
   <div class="project-screenshot">
-    <img src="https://via.placeholder.com/800x400/075E54/ffffff?text=ESWaT+Dashboard+Screenshot" alt="ESWaT Dashboard Screenshot">
-    <p class="screenshot-caption">Live dashboard showing waste hotspots in Enugu State</p>
-  </div>
+  <img src="eswat-dashboard.png" alt="ESWaT Dashboard Screenshot" onerror="this.src='https://via.placeholder.com/800x400/075E54/ffffff?text=ESWaT+Dashboard+Screenshot'">
+  <p class="screenshot-caption">Live dashboard showing waste hotspots in Enugu State</p>
+</div>
 
   <p>A real-time waste management web app helping ESWAMA track overflowing bins and open dumping sites in Enugu State.</p>
   <p><strong>Tech:</strong> React, TypeScript, OpenStreetMap, Leaflet, Google Sheets, Google Apps Script</p>
@@ -901,20 +968,32 @@ body.dark-mode .contact-btn {
       </ul>
     </div>
 
+    <!-- Certifications Section (NEW) -->
+    <div class="card" id="certifications">
+      <h2>📜 Certifications</h2>
+      <div class="cert-grid">
+        <!-- Cisco Data Analytics Essentials -->
+        <div class="cert-card">
+          <img src="YOUR_CISCO_CERTIFICATE_IMAGE_URL_HERE" alt="Cisco Data Analytics Essentials Certificate">
+          <h4>Data Analytics Essentials</h4>
+          <p>Cisco Networking Academy</p>
+          <span class="issuer">Issued: 2026</span>
+        </div>
+        <!-- Add more certifications here as you earn them -->
+      </div>
+    </div>
+
     <!-- Skills & Tools -->
     <div class="card" id="skills">
       <h2>🛠️ Skills & Tools</h2>
       <div class="skills">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">TypeScript</span>
-        <span class="skill-tag">React</span>
-        <span class="skill-tag">Pandas</span>
+        <span class="skill-tag">Excel</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Tableau</span>
         <span class="skill-tag">Looker Studio</span>
-        <span class="skill-tag">Leaflet</span>
-        <span class="skill-tag">OpenStreetMap</span>
-        <span class="skill-tag">Google Apps Script</span>
-        <span class="skill-tag">Git/GitHub</span>
-        <span class="skill-tag">Digital Marketing</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Git/GitHub</span> 
+        <span class="skill-tag">Web App Development with AI</span>               
       </div>
     </div>
 
@@ -968,9 +1047,9 @@ body.dark-mode .contact-btn {
       <span>🛠️</span>
       <span>Skills</span>
     </a>
-    <a href="#blog" class="bottom-nav-item" data-nav="blog">
-      <span>📝</span>
-      <span>Blog</span>
+    <a href="#certifications" class="bottom-nav-item" data-nav="certifications">
+      <span>📜</span>
+      <span>Certifications</span>
     </a>
     <a href="#contact" class="bottom-nav-item" data-nav="contact">
       <span>📬</span>
@@ -1099,7 +1178,7 @@ body.dark-mode .contact-btn {
   const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
   
   function setActiveNav() {
-    const sections = ['about', 'projects', 'skills', 'blog', 'contact'];
+    const sections = ['about', 'projects', 'skills', 'certifications', 'contact'];
     let current = '';
     const scrollPos = window.scrollY + 150;
     
