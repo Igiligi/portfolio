@@ -1127,4 +1127,113 @@ body.dark-mode .contact-btn {
     }
     else if (isDeleting && charIndex === 0) {
       isDeleting = false;
-      message
+      messageIndex = (messageIndex + 1) % messages.length;
+      speed = 500;
+    }
+    
+    setTimeout(typeEffect, speed);
+  }
+  
+  typeEffect();
+
+  // Dark Mode Toggle – Sync both switches
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  const darkModeToggleMobile = document.getElementById('darkModeToggleMobile');
+  const body = document.body;
+
+  function updateToggles(isDark) {
+    if (darkModeToggle) darkModeToggle.checked = isDark;
+    if (darkModeToggleMobile) darkModeToggleMobile.checked = isDark;
+  }
+
+  if (localStorage.getItem('darkMode') === 'enabled') {
+    body.classList.add('dark-mode');
+    updateToggles(true);
+  }
+
+  function toggleDarkMode(enabled) {
+    if (enabled) {
+      body.classList.add('dark-mode');
+      localStorage.setItem('darkMode', 'enabled');
+    } else {
+      body.classList.remove('dark-mode');
+      localStorage.setItem('darkMode', 'disabled');
+    }
+    updateToggles(enabled);
+  }
+
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener('change', (e) => {
+      toggleDarkMode(e.target.checked);
+    });
+  }
+
+  if (darkModeToggleMobile) {
+    darkModeToggleMobile.addEventListener('change', (e) => {
+      toggleDarkMode(e.target.checked);
+    });
+  }
+
+  // Mobile Drawer Menu - FIXED
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileDrawer = document.getElementById('mobileDrawer');
+  const drawerOverlay = document.getElementById('drawerOverlay');
+  const drawerClose = document.getElementById('drawerClose');
+  const drawerLinks = document.querySelectorAll('.drawer-nav a');
+
+  function openDrawer() {
+    mobileDrawer.classList.add('open');
+    drawerOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    mobileDrawer.classList.remove('open');
+    drawerOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', openDrawer);
+  }
+  
+  if (drawerClose) {
+    drawerClose.addEventListener('click', closeDrawer);
+  }
+  
+  if (drawerOverlay) {
+    drawerOverlay.addEventListener('click', closeDrawer);
+  }
+  
+  drawerLinks.forEach(link => {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  // Bottom Navigation Active State
+  const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
+  
+  function setActiveNav() {
+    const sections = ['about', 'projects', 'skills', 'certifications', 'contact'];
+    let current = '';
+    const scrollPos = window.scrollY + 150;
+    
+    for (const section of sections) {
+      const element = document.getElementById(section);
+      if (element && scrollPos >= element.offsetTop) {
+        current = section;
+      }
+    }
+    
+    bottomNavItems.forEach(item => {
+      const navTarget = item.getAttribute('data-nav');
+      if (navTarget === current) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', setActiveNav);
+  window.addEventListener('load', setActiveNav);
+</script>
