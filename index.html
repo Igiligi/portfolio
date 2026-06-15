@@ -7,6 +7,30 @@
   
   <style>
 
+/* Profile Picture */
+.hero-avatar {
+  margin-bottom: 1.5rem;
+}
+
+.avatar-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #075E54;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avatar-img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .avatar-img {
+  border-color: #25D366;
+}
+    
 /* Hero Section */
 .hero {
   min-height: 50vh;
