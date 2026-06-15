@@ -844,6 +844,163 @@ body.dark-mode .contact-btn {
   }
 }
 
+/* Skill Modal Styles */
+.skill-tag {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.skill-tag:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.95);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.skill-tag:active {
+  transform: scale(0.98);
+}
+
+/* Modal Overlay */
+.skill-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 3000;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.skill-modal.show {
+  display: flex;
+  opacity: 1;
+}
+
+/* Modal Content */
+.skill-modal-content {
+  background: white;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  animation: modalSlideIn 0.3s ease;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.skill-modal-header {
+  background: linear-gradient(135deg, #075E54 0%, #128C7E 100%);
+  color: white;
+  padding: 1.2rem 1.5rem;
+  border-radius: 20px 20px 0 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.skill-modal-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: white;
+}
+
+.skill-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.skill-modal-close:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.skill-modal-body {
+  padding: 1.5rem;
+}
+
+.skill-section {
+  margin-bottom: 1.2rem;
+}
+
+.skill-section-title {
+  font-weight: 700;
+  color: #075E54;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skill-section-content {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #1e293b;
+}
+
+.skill-proficiency {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.proficiency-advanced { background: #dcfce7; color: #166534; }
+.proficiency-intermediate { background: #fef9c3; color: #854d0e; }
+.proficiency-beginner { background: #ffe4e2; color: #991b1b; }
+
+/* Dark Mode Modal */
+body.dark-mode .skill-modal-content {
+  background: #2d2d44;
+}
+
+body.dark-mode .skill-section-content {
+  color: #e2e8f0;
+}
+
+body.dark-mode .skill-section-title {
+  color: #25D366;
+}
+
+body.dark-mode .proficiency-advanced { background: #1a3a2a; color: #4ade80; }
+body.dark-mode .proficiency-intermediate { background: #4a3a1a; color: #fbbf24; }
+body.dark-mode .proficiency-beginner { background: #4a1a1a; color: #f87171; }
+    
   </style>
   
 </head>
@@ -914,9 +1071,10 @@ body.dark-mode .contact-btn {
     <!-- About Section -->
     <div class="card" id="about">
       <h2>📌 About Me</h2>
-      <p>I'm a <strong>Data Analyst</strong> (First-Class Civil Engineer), and <strong>AI/ML Engineer</strong>.</p>
-      <p style="margin-top: 0.75rem;">I am currently learning data analysis through <strong>3MTT Nigeria (DHF)</strong> and <strong>Cisco</strong>. I understand the basics but I am still practicing. I am also learning AI/ML through the <strong>Massachusetts Institute of Technology (MIT)</strong>, <strong>USA</strong>, and <strong>TechCrush</strong>.
-      My journey is driven by a simple belief: data can solve real problems all over the world.</p>
+      <p>’m a highly devoted<strong> AI-Enabled Data Analyst</strong> with over 1.5 years of combined experience in<strong> research
+driven analysisr</strong> and<strong> operational data management</strong>. Proven track record of leveraging<strong> Python, SQL, and 
+Tableau</strong>  to drive efficiency, including winning a state hackathon by reducing ESWAMA response times by<strong> 20%</strong>. Skilled in transforming messy enumeration data into actionable business insights and strategic IT 
+recommendations.</p>
     </div>
 
 <!-- HR Analytics Interactive Dashboard -->
@@ -1118,6 +1276,206 @@ body.dark-mode .contact-btn {
     </a>
   </div>
 
+<!-- Skill Modal -->
+<div id="skillModal" class="skill-modal">
+  <div class="skill-modal-content">
+    <div class="skill-modal-header">
+      <h3 id="modalSkillTitle">Excel</h3>
+      <button class="skill-modal-close" onclick="closeSkillModal()">&times;</button>
+    </div>
+    <div class="skill-modal-body" id="modalSkillBody">
+      <!-- Content will be injected here -->
+    </div>
+  </div>
+</div>
+
+// Skill Data - Detailed information for each skill
+const skillData = {
+  excel: {
+    name: "Microsoft Excel",
+    proficiency: "Advanced",
+    proficiencyLevel: "advanced",
+    howLearned: "Self-taught through 3MTT Data Analytics Fellowship, Cisco Data Analytics Essentials, and hands-on project work. Daily practice with real datasets.",
+    projects: [
+      "HR Analytics Dashboard (attrition analysis with pivot tables & slicers)",
+      "JAMB Top Scorers Dashboard (10-year performance trends)",
+      "ESWaT data management (Google Sheets backend integration)"
+    ],
+    tools: ["Pivot Tables", "Power Query", "DAX", "Advanced Formulas", "Slicers", "Charts"]
+  },
+  sql: {
+    name: "SQL",
+    proficiency: "Intermediate",
+    proficiencyLevel: "intermediate",
+    howLearned: "Self-taught through online resources, 3MTT curriculum, and practical application using MySQL and DBeaver.",
+    projects: [
+      "Database querying for data cleaning and analysis",
+      "Data extraction for HR and business reporting",
+      "Google Sheets Query functions for backend data management"
+    ],
+    tools: ["MySQL", "DBeaver", "JOINs", "Subqueries", "Aggregation Functions"]
+  },
+  tableau: {
+    name: "Tableau",
+    proficiency: "Intermediate",
+    proficiencyLevel: "intermediate",
+    howLearned: "Hands-on practice through 3MTT Data Analytics Fellowship and personal projects.",
+    projects: [
+      "Interactive dashboards for business metrics",
+      "Data visualization for stakeholder presentations"
+    ],
+    tools: ["Dashboards", "Calculated Fields", "Dual Axis Charts", "Filters", "Storytelling"]
+  },
+  looker: {
+    name: "Looker Studio",
+    proficiency: "Intermediate",
+    proficiencyLevel: "intermediate",
+    howLearned: "Self-taught through documentation and building dashboards for personal projects.",
+    projects: [
+      "Business performance dashboards",
+      "Marketing data visualization",
+      "Real-time data reporting"
+    ],
+    tools: ["Data Sources", "Charts", "Calculated Fields", "Filters", "Embedded Reports"]
+  },
+  python: {
+    name: "Python",
+    proficiency: "Beginner",
+    proficiencyLevel: "beginner",
+    howLearned: "TechCrush AI/ML Scholarship, MIT Universal AI Pilot Program, and self-study. Focus on data analysis libraries.",
+    projects: [
+      "Data cleaning and analysis with Pandas",
+      "Numerical computations with NumPy",
+      "AI model training for ESWaT (TensorFlow)"
+    ],
+    tools: ["Pandas", "NumPy", "TensorFlow.js", "Jupyter Notebook"]
+  },
+  git: {
+    name: "Git & GitHub",
+    proficiency: "Intermediate",
+    proficiencyLevel: "intermediate",
+    howLearned: "Daily practice through portfolio development and project collaboration. 60+ day public learning streak.",
+    projects: [
+      "Portfolio website hosting",
+      "ESWaT repository management",
+      "Version control for all coding projects"
+    ],
+    tools: ["Git", "GitHub", "GitHub Pages", "Version Control", "Branching"]
+  },
+  dataviz: {
+    name: "Data Visualization",
+    proficiency: "Intermediate",
+    proficiencyLevel: "intermediate",
+    howLearned: "3MTT Data Analytics Fellowship, Cisco Data Analytics Essentials, and extensive project work.",
+    projects: [
+      "HR Analytics Dashboard (Excel)",
+      "JAMB Top Scorers Dashboard",
+      "ESWaT map-based waste visualization"
+    ],
+    tools: ["Tableau", "Looker Studio", "Excel Charts", "Leaflet Maps", "Recharts"]
+  },
+  webapp: {
+    name: "Web App Development with AI",
+    proficiency: "Intermediate",
+    proficiencyLevel: "intermediate",
+    howLearned: "TechCrush AI/ML Scholarship, 3MTT NextGen Hackathon, and self-study. Winner of Enugu State Hackathon.",
+    projects: [
+      "ESWaT - AI-powered waste management app (96% accuracy)",
+      "Dbay Network Business Website (payment integration)",
+      "Portfolio website"
+    ],
+    tools: ["React", "TypeScript", "TensorFlow.js", "Leaflet", "HTML/CSS", "Netlify"]
+  }
+};
+
+// Function to render modal content
+function renderSkillModal(skillId) {
+  const skill = skillData[skillId];
+  if (!skill) return;
+  
+  const proficiencyColor = skill.proficiencyLevel === 'advanced' ? '🟢 Advanced' : 
+                          (skill.proficiencyLevel === 'intermediate' ? '🟡 Intermediate' : '🔵 Beginner');
+  
+  const projectsHtml = skill.projects.map(project => `<li style="margin-bottom: 0.3rem;">📌 ${project}</li>`).join('');
+  const toolsHtml = skill.tools.map(tool => `<span class="skill-tag" style="margin: 0.2rem; font-size: 0.7rem;">${tool}</span>`).join('');
+  
+  const html = `
+    <div class="skill-section">
+      <div class="skill-section-title">📊 Proficiency</div>
+      <div class="skill-section-content">
+        <span class="proficiency-${skill.proficiencyLevel}" style="padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: 600;">
+          ${proficiencyColor}
+        </span>
+      </div>
+    </div>
+    
+    <div class="skill-section">
+      <div class="skill-section-title">🎓 How I Learned</div>
+      <div class="skill-section-content">${skill.howLearned}</div>
+    </div>
+    
+    <div class="skill-section">
+      <div class="skill-section-title">🚀 Projects Using ${skill.name}</div>
+      <div class="skill-section-content">
+        <ul style="margin-left: 1.2rem; list-style-type: none; padding-left: 0;">
+          ${projectsHtml}
+        </ul>
+      </div>
+    </div>
+    
+    <div class="skill-section">
+      <div class="skill-section-title">🛠️ Specific Tools & Techniques</div>
+      <div class="skill-section-content">
+        <div style="display: flex; flex-wrap: wrap; gap: 0.3rem;">
+          ${toolsHtml}
+        </div>
+      </div>
+    </div>
+  `;
+  
+  document.getElementById('modalSkillTitle').textContent = skill.name;
+  document.getElementById('modalSkillBody').innerHTML = html;
+}
+
+// Modal functions
+function openSkillModal(skillId) {
+  renderSkillModal(skillId);
+  const modal = document.getElementById('skillModal');
+  modal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSkillModal() {
+  const modal = document.getElementById('skillModal');
+  modal.classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+// Add click listeners to all skill tags
+document.querySelectorAll('.skill-tag').forEach(tag => {
+  tag.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const skillId = tag.getAttribute('data-skill');
+    if (skillId && skillData[skillId]) {
+      openSkillModal(skillId);
+    }
+  });
+});
+
+// Close modal when clicking outside content
+document.getElementById('skillModal').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('skillModal')) {
+    closeSkillModal();
+  }
+});
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeSkillModal();
+  }
+});
+  
   <script>
   // Typewriter Effect
   const messages = [
@@ -1262,6 +1620,7 @@ body.dark-mode .contact-btn {
   
   window.addEventListener('scroll', setActiveNav);
   window.addEventListener('load', setActiveNav);
+   
 </script>
 </body>
 </html>
