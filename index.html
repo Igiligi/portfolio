@@ -216,6 +216,84 @@ body {
   color: #075E54;
 }
 
+/* Navbar Dropdown Styles */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-trigger {
+  text-decoration: none;
+  color: #1e293b;
+  font-weight: 500;
+  transition: color 0.2s;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+
+.desktop-nav a:hover, .dropdown-trigger:hover {
+  color: #075E54;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  min-width: 250px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  padding: 0.5rem 0;
+  z-index: 1000;
+  margin-top: 0.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  color: #1e293b;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+
+.dropdown-menu a:hover {
+  background: #f1f5f9;
+  color: #075E54;
+}
+
+/* Dark Mode Dropdown */
+body.dark-mode .dropdown-menu {
+  background: #2d2d44;
+  border-color: #3d3d5c;
+}
+
+body.dark-mode .dropdown-menu a {
+  color: #e2e8f0;
+}
+
+body.dark-mode .dropdown-menu a:hover {
+  background: #3d3d5c;
+  color: #25D366;
+}
+
+body.dark-mode .dropdown-trigger {
+  color: #e2e8f0;
+}
+
+body.dark-mode .dropdown-trigger:hover {
+  color: #25D366;
+}
+
 /* iOS Style Toggle Switch */
 .toggle-switch {
   position: relative;
@@ -523,56 +601,6 @@ body.dark-mode .testimonial-author {
   color: #128C7E;
   margin-bottom: 0.5rem;
   font-size: 1.1rem;
-}
-
-/* Project Dropdown Styles */
-.project-dropdown {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #e2e8f0;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.project-dropdown label {
-  font-weight: 600;
-  color: #075E54;
-  font-size: 0.9rem;
-}
-
-.project-select {
-  flex: 1;
-  min-width: 200px;
-  padding: 0.6rem 1rem;
-  border-radius: 10px;
-  border: 1.5px solid #e2e8f0;
-  background: white;
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.project-select:hover {
-  border-color: #075E54;
-}
-
-.project-select:focus {
-  outline: none;
-  border-color: #075E54;
-  box-shadow: 0 0 0 3px rgba(7, 94, 84, 0.1);
-}
-
-body.dark-mode .project-select {
-  background: #2d2d44;
-  border-color: #3d3d5c;
-  color: #e2e8f0;
-}
-
-body.dark-mode .project-select:hover {
-  border-color: #25D366;
 }
 
 /* Project Items */
@@ -930,11 +958,6 @@ body.dark-mode .contact-btn {
   .cert-grid {
     grid-template-columns: 1fr;
   }
-  
-  .project-dropdown {
-    flex-direction: column;
-    align-items: stretch;
-  }
 }
 
 /* Skill Modal Styles */
@@ -1085,7 +1108,17 @@ body.dark-mode .proficiency-beginner { background: #4a1a1a; color: #f87171; }
         <div class="header-right">
           <nav class="desktop-nav">
             <a href="#about">About</a>
-            <a href="#projects">Projects</a>
+            
+            <!-- Projects Dropdown in Navbar -->
+            <div class="nav-dropdown">
+              <button class="dropdown-trigger">Projects ▼</button>
+              <div class="dropdown-menu">
+                <a href="#" data-project="hr-dashboard">📊 HR Analytics Dashboard</a>
+                <a href="#" data-project="jamb-dashboard">📈 JAMB Top Scorers Dashboard</a>
+                <a href="#" data-project="eswat">🗑️ ESWaT - Waste Management</a>
+              </div>
+            </div>
+            
             <a href="#skills">Skills</a>
             <a href="#certifications">Certifications</a>
             <a href="#blog">Blog</a>
@@ -1141,20 +1174,9 @@ body.dark-mode .proficiency-beginner { background: #4a1a1a; color: #f87171; }
       <p>I'm a highly devoted <strong>AI-Enabled Data Analyst</strong> with over 1.5 years of combined experience in <strong>research driven analysis</strong> and <strong>operational data management</strong>. Proven track record of leveraging <strong>Python, SQL, and Tableau</strong> to drive efficiency, including winning a state hackathon by reducing ESWAMA response times by <strong>20%</strong>. Skilled in transforming messy enumeration data into actionable business insights and strategic IT recommendations.</p>
     </div>
 
-    <!-- Projects Section with Dropdown -->
+    <!-- Projects Section -->
     <div class="card" id="projects">
       <h2>🚀 My Projects</h2>
-      
-      <!-- Project Dropdown -->
-      <div class="project-dropdown">
-        <label>🔍 Jump to project:</label>
-        <select id="projectSelect" class="project-select">
-          <option value="">-- Select a project --</option>
-          <option value="hr-dashboard">📊 HR Analytics Dashboard</option>
-          <option value="jamb-dashboard">📈 JAMB Top Scorers Dashboard</option>
-          <option value="eswat">🗑️ Enugu Smart Waste Tracker (ESWaT)</option>
-        </select>
-      </div>
 
       <!-- Project 1: HR Analytics Dashboard -->
       <div id="hr-dashboard" class="project-item">
@@ -1554,13 +1576,13 @@ body.dark-mode .proficiency-beginner { background: #4a1a1a; color: #f87171; }
     }
   });
 
-  // Project Dropdown Functionality
-  const projectSelect = document.getElementById('projectSelect');
-  if (projectSelect) {
-    projectSelect.addEventListener('change', function() {
-      const selectedValue = this.value;
-      if (selectedValue) {
-        const targetElement = document.getElementById(selectedValue);
+  // Project Dropdown Navigation - Handle clicks from navbar dropdown
+  document.querySelectorAll('.dropdown-menu a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const projectId = link.getAttribute('data-project');
+      if (projectId) {
+        const targetElement = document.getElementById(projectId);
         if (targetElement) {
           document.querySelectorAll('.project-item').forEach(item => {
             item.classList.remove('project-highlight');
@@ -1568,15 +1590,12 @@ body.dark-mode .proficiency-beginner { background: #4a1a1a; color: #f87171; }
           targetElement.classList.add('project-highlight');
           targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
           setTimeout(() => {
-            projectSelect.value = '';
-            setTimeout(() => {
-              targetElement.classList.remove('project-highlight');
-            }, 1500);
-          }, 1000);
+            targetElement.classList.remove('project-highlight');
+          }, 1500);
         }
       }
     });
-  }
+  });
 
   // Typewriter Effect
   const messages = [
