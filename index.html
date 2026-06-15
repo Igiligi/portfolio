@@ -1243,7 +1243,7 @@ body.dark-mode .proficiency-beginner { background: #4a1a1a; color: #f87171; }
             <span class="stat-label">Live Reports</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number">1400+</span>
+            <span class="stat-number">1600+</span>
             <span class="stat-label">LinkedIn Impressions</span>
           </div>
           <div class="stat-item">
@@ -1301,18 +1301,18 @@ body.dark-mode .proficiency-beginner { background: #4a1a1a; color: #f87171; }
 
     <!-- Skills & Tools -->
     <div class="card" id="skills">
-      <h2>🛠️ Skills & Tools</h2>
-      <p style="margin-bottom: 0.75rem; font-size: 0.85rem;">👆 Click on any skill to learn more about my experience</p>
+      <h2>🛠️ Skills & Tools</h2>      
       <div class="skills">
         <span class="skill-tag" data-skill="excel">Excel</span>
         <span class="skill-tag" data-skill="sql">SQL</span>
         <span class="skill-tag" data-skill="tableau">Tableau</span>        
         <span class="skill-tag" data-skill="looker">Looker Studio</span>
         <span class="skill-tag" data-skill="python">Python</span>
-        <span class="skill-tag" data-skill="git">Git/GitHub</span> 
+        <span class="skill-tag" data-skill="git">Git/GitHub</span>
         <span class="skill-tag" data-skill="dataviz">Data Visualization</span>
         <span class="skill-tag" data-skill="webapp">Web App Development with AI</span>               
       </div>
+      <p style="margin-bottom: 0.75rem; font-size: 0.85rem;">👆 Click on any skill to learn more about my experience</p>
     </div>
 
     <!-- Testimonials Section -->
@@ -1401,7 +1401,7 @@ body.dark-mode .proficiency-beginner { background: #4a1a1a; color: #f87171; }
         "JAMB Top Scorers Dashboard (10-year performance trends)",
         "ESWaT data management (Google Sheets backend integration)"
       ],
-      tools: ["Pivot Tables", "Power Query", "DAX", "Advanced Formulas", "Slicers", "Charts"]
+      tools: ["Pivot Tables", "Power Query", "Advanced Formulas", "Slicers", "Charts"]
     },
     sql: {
       name: "SQL",
@@ -1496,7 +1496,7 @@ body.dark-mode .proficiency-beginner { background: #4a1a1a; color: #f87171; }
     const proficiencyColor = skill.proficiencyLevel === 'advanced' ? '🟢 Advanced' : 
                             (skill.proficiencyLevel === 'intermediate' ? '🟡 Intermediate' : '🔵 Beginner');
     
-    const projectsHtml = skill.projects.map(project => `<li style="margin-bottom: 0.3rem;">📌 ${project}</li>`).join('');
+    const projectsHtml = skill.projects.map(project => `<li style="margin-bottom: 0.3rem;">• ${project}</li>`).join('');
     const toolsHtml = skill.tools.map(tool => `<span class="skill-tag" style="margin: 0.2rem; font-size: 0.7rem;">${tool}</span>`).join('');
     
     const html = `
