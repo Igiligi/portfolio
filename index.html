@@ -141,7 +141,7 @@ html {
 }
 
 /* Prevent content from hiding behind sticky header */
-.card {
+.card, .project-item {
   scroll-margin-top: 80px;
 }
 
@@ -281,7 +281,7 @@ input:checked + .toggle-slider:before {
   background: rgba(0,0,0,0.05);
 }
 
-/* Mobile Drawer Menu - FIXED */
+/* Mobile Drawer Menu */
 .mobile-drawer {
   position: fixed;
   top: 0;
@@ -525,6 +525,94 @@ body.dark-mode .testimonial-author {
   font-size: 1.1rem;
 }
 
+/* Project Dropdown Styles */
+.project-dropdown {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.project-dropdown label {
+  font-weight: 600;
+  color: #075E54;
+  font-size: 0.9rem;
+}
+
+.project-select {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  border: 1.5px solid #e2e8f0;
+  background: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.project-select:hover {
+  border-color: #075E54;
+}
+
+.project-select:focus {
+  outline: none;
+  border-color: #075E54;
+  box-shadow: 0 0 0 3px rgba(7, 94, 84, 0.1);
+}
+
+body.dark-mode .project-select {
+  background: #2d2d44;
+  border-color: #3d3d5c;
+  color: #e2e8f0;
+}
+
+body.dark-mode .project-select:hover {
+  border-color: #25D366;
+}
+
+/* Project Items */
+.project-item {
+  scroll-margin-top: 80px;
+}
+
+.project-item:not(:last-child) {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+body.dark-mode .project-item:not(:last-child) {
+  border-bottom-color: #3d3d5c;
+}
+
+/* Project Highlight Animation */
+.project-highlight {
+  animation: highlightFlash 1.5s ease-in-out;
+  padding-left: 1rem;
+  border-left: 4px solid #075E54;
+}
+
+body.dark-mode .project-highlight {
+  border-left-color: #25D366;
+}
+
+@keyframes highlightFlash {
+  0% {
+    background-color: rgba(7, 94, 84, 0);
+  }
+  30% {
+    background-color: rgba(7, 94, 84, 0.08);
+  }
+  100% {
+    background-color: rgba(7, 94, 84, 0);
+  }
+}
+
 /* Project Section */
 .project-link {
   display: inline-block;
@@ -627,14 +715,6 @@ body.dark-mode .stat-number {
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
 
-.cert-card img {
-  width: 100%;
-  max-height: 180px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 0.75rem;
-}
-
 .cert-card h4 {
   color: #075E54;
   margin-bottom: 0.25rem;
@@ -681,6 +761,14 @@ body.dark-mode .cert-card p {
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.skill-tag:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.95);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 /* Recognition List */
@@ -842,26 +930,14 @@ body.dark-mode .contact-btn {
   .cert-grid {
     grid-template-columns: 1fr;
   }
+  
+  .project-dropdown {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 /* Skill Modal Styles */
-.skill-tag {
-  cursor: pointer;
-  transition: all 0.2s ease;
-  position: relative;
-}
-
-.skill-tag:hover {
-  transform: translateY(-2px);
-  filter: brightness(0.95);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.skill-tag:active {
-  transform: scale(0.98);
-}
-
-/* Modal Overlay */
 .skill-modal {
   display: none;
   position: fixed;
@@ -971,15 +1047,6 @@ body.dark-mode .contact-btn {
   color: #1e293b;
 }
 
-.skill-proficiency {
-  display: inline-block;
-  padding: 0.2rem 0.6rem;
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  margin-top: 0.5rem;
-}
-
 .proficiency-advanced { background: #dcfce7; color: #166534; }
 .proficiency-intermediate { background: #fef9c3; color: #854d0e; }
 .proficiency-beginner { background: #ffe4e2; color: #991b1b; }
@@ -1071,101 +1138,111 @@ body.dark-mode .proficiency-beginner { background: #4a1a1a; color: #f87171; }
     <!-- About Section -->
     <div class="card" id="about">
       <h2>📌 About Me</h2>
-      <p>’m a highly devoted<strong> AI-Enabled Data Analyst</strong> with over 1.5 years of combined experience in<strong> research
-driven analysisr</strong> and<strong> operational data management</strong>. Proven track record of leveraging<strong> Python, SQL, and 
-Tableau</strong>  to drive efficiency, including winning a state hackathon by reducing ESWAMA response times by<strong> 20%</strong>. Skilled in transforming messy enumeration data into actionable business insights and strategic IT 
-recommendations.</p>
+      <p>I'm a highly devoted <strong>AI-Enabled Data Analyst</strong> with over 1.5 years of combined experience in <strong>research driven analysis</strong> and <strong>operational data management</strong>. Proven track record of leveraging <strong>Python, SQL, and Tableau</strong> to drive efficiency, including winning a state hackathon by reducing ESWAMA response times by <strong>20%</strong>. Skilled in transforming messy enumeration data into actionable business insights and strategic IT recommendations.</p>
     </div>
 
-<!-- HR Analytics Interactive Dashboard -->
-<div class="card" id="projects">
-  <h2>📊 HR Analytics Dashboard</h2>
-  <h3>Workforce Attrition & Overtime Analysis</h3>
-  
-  <!-- Dashboard Screenshot Placeholder -->
-  <div class="project-screenshot">
-    <img src="hr-dashboard-preview.png" alt="HR Analytics Dashboard Preview" onerror="this.src='https://via.placeholder.com/800x400/075E54/ffffff?text=HR+Analytics+Dashboard'">
-    <p class="screenshot-caption">Interactive Excel dashboard showing attrition patterns, overtime impact, and department insights</p>
-  </div>
-
-  <p>An interactive Excel dashboard designed for HR professionals to visualize workforce metrics, identify attrition patterns, and make data-driven decisions about talent retention.</p>
-  
-  <p><strong>Key Insights:</strong></p>
-  <ul class="recognition-list" style="margin-bottom: 1rem;">
-    <li><strong>16% attrition rate</strong> (237 employees left) – within industry norm</li>
-    <li><strong>Overtime employees are 3x more likely to leave</strong> (30.5% vs 10.4%)</li>
-    <li><strong>Sales department</strong> has highest attrition count (92 employees)</li>
-    <li><strong>416 employees (28%)</strong> work overtime – potential burnout risk</li>
-  </ul>
-  
-  <p><strong>Tools Used: </strong>Microsoft Excel (Pivot Tables, Pivot Charts, Slicers)</p>
-  
-  <div>
-    <a href="https://github.com/Igiligi/hr-excel-interactive-dashboard" class="project-link" target="_blank">🔗 View on GitHub</a>
-  </div>
-</div>
-    
-    <!-- JAMB Top Scorers Dashboard -->
-    <div class="card">
-      <h2>📊 Nigeria Top JAMB Scores Performance (2017–2026)</h2>
-      <h3>JAMB Top Scorers Dashboard</h3>
+    <!-- Projects Section with Dropdown -->
+    <div class="card" id="projects">
+      <h2>🚀 My Projects</h2>
       
-      <!-- Project Screenshot -->
-      <div class="project-screenshot">
-        <img src="Jamb top scorers dashboard.png" alt="JAMB Top Scorers Dashboard 2017-2026" onerror="this.src='https://via.placeholder.com/800x400/075E54/ffffff?text=JAMB+Top+Scorers+Dashboard'">
-        <p class="screenshot-caption">10-Year Analysis: The Steady Rise of Top UTME Scores (2017-2026)</p>
+      <!-- Project Dropdown -->
+      <div class="project-dropdown">
+        <label>🔍 Jump to project:</label>
+        <select id="projectSelect" class="project-select">
+          <option value="">-- Select a project --</option>
+          <option value="hr-dashboard">📊 HR Analytics Dashboard</option>
+          <option value="jamb-dashboard">📈 JAMB Top Scorers Dashboard</option>
+          <option value="eswat">🗑️ Enugu Smart Waste Tracker (ESWaT)</option>
+        </select>
       </div>
 
-      <p>An interactive dashboard analyzing Nigeria's top JAMB scores over a decade, revealing performance trends, state dominance, and university preferences of high-achieving students.</p>
-      
-      <p><strong>Key Insights:</strong></p>
-      <ul class="recognition-list" style="margin-bottom: 1rem;">
-        <li><strong>Anambra State</strong> leads with 4 top scores, followed by Ondo and Ekiti (2 each)</li>
-        <li><strong>Record growth:</strong> Peak performance of 375 achieved in 2025</li>
-        <li><strong>UNILAG</strong> is the #1 preferred university destination for top scorers</li>
-        <li><strong>Upward trend:</strong> Scores rose from 353 (2017) to 375 (2025)</li>
-      </ul>
-      
-      <p><strong>Tool Used:</strong> Excel</p>
-      
-      <div>
-        <a href="https://docs.google.com/spreadsheets/d/1qsnIpwzSzFl239qHnT-0ZGg2901UVlI5/edit?usp=sharing&ouid=116651659389641656255&rtpof=true&sd=true" class="project-link" target="_blank">🔗 View Live Dashboard</a>
-      </div>
-    </div>
+      <!-- Project 1: HR Analytics Dashboard -->
+      <div id="hr-dashboard" class="project-item">
+        <h3>📊 HR Analytics Dashboard</h3>
+        <h4>Workforce Attrition & Overtime Analysis</h4>
+        
+        <div class="project-screenshot">
+          <img src="hr-dashboard-preview.png" alt="HR Analytics Dashboard Preview" onerror="this.src='https://via.placeholder.com/800x400/075E54/ffffff?text=HR+Analytics+Dashboard'">
+          <p class="screenshot-caption">Interactive Excel dashboard showing attrition patterns, overtime impact, and department insights</p>
+        </div>
 
-    <!-- Featured Project: ESWaT -->
-    <div class="card">
-      <h2>🚀 Featured Project: ESWaT</h2>
-      <h3>Enugu Smart Waste Tracker</h3>
-      
-      <!-- Social Proof Counters -->
-      <div class="stats-grid">
-        <div class="stat-item">
-          <span class="stat-number">35+</span>
-          <span class="stat-label">Live Reports</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">1400+</span>
-          <span class="stat-label">LinkedIn Impressions</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">🏆</span>
-          <span class="stat-label">Challenge Winner</span>
+        <p>An interactive Excel dashboard designed for HR professionals to visualize workforce metrics, identify attrition patterns, and make data-driven decisions about talent retention.</p>
+        
+        <p><strong>Key Insights:</strong></p>
+        <ul class="recognition-list" style="margin-bottom: 1rem;">
+          <li><strong>16% attrition rate</strong> (237 employees left) – within industry norm</li>
+          <li><strong>Overtime employees are 3x more likely to leave</strong> (30.5% vs 10.4%)</li>
+          <li><strong>Sales department</strong> has highest attrition count (92 employees)</li>
+          <li><strong>416 employees (28%)</strong> work overtime – potential burnout risk</li>
+        </ul>
+        
+        <p><strong>Tools Used:</strong> Microsoft Excel (Pivot Tables, Pivot Charts, Slicers)</p>
+        
+        <div>
+          <a href="https://github.com/Igiligi/hr-excel-interactive-dashboard" class="project-link" target="_blank">🔗 View on GitHub</a>
         </div>
       </div>
 
-      <!-- ESWaT Screenshot -->
-      <div class="project-screenshot">
-        <img src="eswat-dashboard.png" alt="ESWaT Dashboard Screenshot" onerror="this.src='https://via.placeholder.com/800x400/075E54/ffffff?text=ESWaT+Dashboard+Screenshot'">
-        <p class="screenshot-caption">Live dashboard showing waste hotspots in Enugu State</p>
+      <!-- Project 2: JAMB Top Scorers Dashboard -->
+      <div id="jamb-dashboard" class="project-item">
+        <h3>📊 Nigeria Top JAMB Scores Performance (2017–2026)</h3>
+        <h4>JAMB Top Scorers Dashboard</h4>
+        
+        <div class="project-screenshot">
+          <img src="Jamb top scorers dashboard.png" alt="JAMB Top Scorers Dashboard 2017-2026" onerror="this.src='https://via.placeholder.com/800x400/075E54/ffffff?text=JAMB+Top+Scorers+Dashboard'">
+          <p class="screenshot-caption">10-Year Analysis: The Steady Rise of Top UTME Scores (2017-2026)</p>
+        </div>
+
+        <p>An interactive dashboard analyzing Nigeria's top JAMB scores over a decade, revealing performance trends, state dominance, and university preferences of high-achieving students.</p>
+        
+        <p><strong>Key Insights:</strong></p>
+        <ul class="recognition-list" style="margin-bottom: 1rem;">
+          <li><strong>Anambra State</strong> leads with 4 top scores, followed by Ondo and Ekiti (2 each)</li>
+          <li><strong>Record growth:</strong> Peak performance of 375 achieved in 2025</li>
+          <li><strong>UNILAG</strong> is the #1 preferred university destination for top scorers</li>
+          <li><strong>Upward trend:</strong> Scores rose from 353 (2017) to 375 (2025)</li>
+        </ul>
+        
+        <p><strong>Tool Used:</strong> Excel</p>
+        
+        <div>
+          <a href="https://docs.google.com/spreadsheets/d/1qsnIpwzSzFl239qHnT-0ZGg2901UVlI5/edit?usp=sharing" class="project-link" target="_blank">🔗 View Live Dashboard</a>
+        </div>
       </div>
 
-      <p>A real-time waste management web app helping ESWAMA track overflowing bins and open dumping sites in Enugu State.</p>
-      <p><strong>Tech:</strong> React, TypeScript, OpenStreetMap, Leaflet, Google Sheets, Google Apps Script</p>
-      <p><strong>Recognition:</strong> 🏆 WINNER of 3MTT NextGen Challenge</p>
-      <div>
-        <a href="https://eswatapp.netlify.app" class="project-link" target="_blank">🔗 Live Demo</a>
-        <a href="https://github.com/Igiligi/ESWaT-App" class="project-link secondary" target="_blank">🔗 GitHub (Private)</a>
+      <!-- Project 3: ESWaT -->
+      <div id="eswat" class="project-item">
+        <h3>🗑️ Enugu Smart Waste Tracker (ESWaT)</h3>
+        <h4>AI-Powered Waste Management System</h4>
+        
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">35+</span>
+            <span class="stat-label">Live Reports</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">1400+</span>
+            <span class="stat-label">LinkedIn Impressions</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">🏆</span>
+            <span class="stat-label">Hackathon Winner</span>
+          </div>
+        </div>
+
+        <div class="project-screenshot">
+          <img src="eswat-dashboard.png" alt="ESWaT Dashboard Screenshot" onerror="this.src='https://via.placeholder.com/800x400/075E54/ffffff?text=ESWaT+Dashboard+Screenshot'">
+          <p class="screenshot-caption">Live dashboard showing waste hotspots in Enugu State</p>
+        </div>
+
+        <p>A real-time waste management web app helping ESWAMA track overflowing bins and open dumping sites in Enugu State. Features AI-powered waste classification with 96% accuracy.</p>
+        <p><strong>Tech:</strong> React, TypeScript, TensorFlow.js, OpenStreetMap, Leaflet, Google Sheets, Google Apps Script</p>
+        <p><strong>Recognition:</strong> 🏆 WINNER of 3MTT NextGen Challenge (Enugu State)</p>
+        
+        <div>
+          <a href="https://eswatapp.netlify.app" class="project-link" target="_blank">🔗 Live Demo</a>
+          <a href="https://github.com/Igiligi/ESWaT-App" class="project-link secondary" target="_blank">🐙 GitHub Repository</a>
+        </div>
       </div>
     </div>
 
@@ -1173,13 +1250,13 @@ recommendations.</p>
     <div class="card">
       <h2>🎓 Recognition & Achievements</h2>
       <ul class="recognition-list">
-        <li>🏆 <strong>WINNER – 3MTT NextGen Challenge</strong></li>
-        <li>First-Class Honours, Civil Engineering</li>
-        <li>Legit.ng Feature – Transition from Engineering to Tech</li>
+        <li>🏆 <strong>WINNER – 3MTT NextGen Challenge</strong> (Enugu State)</li>
+        <li>First-Class Honours, Civil Engineering (Best Graduating Student)</li>
+        <li>Legit.ng Feature – "From Civil Engineering to Tech"</li>
         <li>3MTT Nigeria – Data Analytics Fellow</li>
         <li>TechCrush AI/ML Scholarship – Current Scholar</li>
         <li>NJFP Fellow – Nigerian Jubilee Fellows Programme</li>
-        <li>Best Graduating Student – Academic Excellence Award</li>
+        <li>451 Alliance Member – S&P Global IT Research Think Tank</li>
       </ul>
     </div>
 
@@ -1187,7 +1264,6 @@ recommendations.</p>
     <div class="card" id="certifications">
       <h2>📜 Certifications</h2>
       <div class="cert-grid">
-        <!-- Cisco Data Analytics Essentials -->
         <div class="cert-card">
           <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="ce54d76e-5634-4545-b6f9-3a8f6904ff6b" data-share-badge-host="https://www.credly.com"></div>
           <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
@@ -1204,15 +1280,16 @@ recommendations.</p>
     <!-- Skills & Tools -->
     <div class="card" id="skills">
       <h2>🛠️ Skills & Tools</h2>
+      <p style="margin-bottom: 0.75rem; font-size: 0.85rem;">👆 Click on any skill to learn more about my experience</p>
       <div class="skills">
-        <span class="skill-tag">Excel</span>
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">Tableau</span>        
-        <span class="skill-tag">Looker Studio</span>
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">Git/GitHub</span> 
-        <span class="skill-tag">Data Visualization</span>
-        <span class="skill-tag">Web App Development with AI</span>               
+        <span class="skill-tag" data-skill="excel">Excel</span>
+        <span class="skill-tag" data-skill="sql">SQL</span>
+        <span class="skill-tag" data-skill="tableau">Tableau</span>        
+        <span class="skill-tag" data-skill="looker">Looker Studio</span>
+        <span class="skill-tag" data-skill="python">Python</span>
+        <span class="skill-tag" data-skill="git">Git/GitHub</span> 
+        <span class="skill-tag" data-skill="dataviz">Data Visualization</span>
+        <span class="skill-tag" data-skill="webapp">Web App Development with AI</span>               
       </div>
     </div>
 
@@ -1240,7 +1317,7 @@ recommendations.</p>
       <h2>📬 Let's Connect</h2>
       <div class="contact-links">
         <a href="https://www.linkedin.com/in/chibueze-igiligi-15056a2a3" target="_blank">🔗 LinkedIn</a>
-        <a href="https://github.com/Igiligi" target="_blank">🔗 GitHub</a>
+        <a href="https://github.com/Igiligi" target="_blank">🐙 GitHub</a>
         <a href="mailto:johnboscoigiligi3@gmail.com">📧 johnboscoigiligi3@gmail.com</a>
       </div>
     </div>
@@ -1276,207 +1353,236 @@ recommendations.</p>
     </a>
   </div>
 
-<!-- Skill Modal -->
-<div id="skillModal" class="skill-modal">
-  <div class="skill-modal-content">
-    <div class="skill-modal-header">
-      <h3 id="modalSkillTitle">Excel</h3>
-      <button class="skill-modal-close" onclick="closeSkillModal()">&times;</button>
-    </div>
-    <div class="skill-modal-body" id="modalSkillBody">
-      <!-- Content will be injected here -->
+  <!-- Skill Modal -->
+  <div id="skillModal" class="skill-modal">
+    <div class="skill-modal-content">
+      <div class="skill-modal-header">
+        <h3 id="modalSkillTitle">Excel</h3>
+        <button class="skill-modal-close" onclick="closeSkillModal()">&times;</button>
+      </div>
+      <div class="skill-modal-body" id="modalSkillBody">
+        <!-- Content injected via JavaScript -->
+      </div>
     </div>
   </div>
-</div>
 
-// Skill Data - Detailed information for each skill
-const skillData = {
-  excel: {
-    name: "Microsoft Excel",
-    proficiency: "Advanced",
-    proficiencyLevel: "advanced",
-    howLearned: "Self-taught through 3MTT Data Analytics Fellowship, Cisco Data Analytics Essentials, and hands-on project work. Daily practice with real datasets.",
-    projects: [
-      "HR Analytics Dashboard (attrition analysis with pivot tables & slicers)",
-      "JAMB Top Scorers Dashboard (10-year performance trends)",
-      "ESWaT data management (Google Sheets backend integration)"
-    ],
-    tools: ["Pivot Tables", "Power Query", "DAX", "Advanced Formulas", "Slicers", "Charts"]
-  },
-  sql: {
-    name: "SQL",
-    proficiency: "Intermediate",
-    proficiencyLevel: "intermediate",
-    howLearned: "Self-taught through online resources, 3MTT curriculum, and practical application using MySQL and DBeaver.",
-    projects: [
-      "Database querying for data cleaning and analysis",
-      "Data extraction for HR and business reporting",
-      "Google Sheets Query functions for backend data management"
-    ],
-    tools: ["MySQL", "DBeaver", "JOINs", "Subqueries", "Aggregation Functions"]
-  },
-  tableau: {
-    name: "Tableau",
-    proficiency: "Intermediate",
-    proficiencyLevel: "intermediate",
-    howLearned: "Hands-on practice through 3MTT Data Analytics Fellowship and personal projects.",
-    projects: [
-      "Interactive dashboards for business metrics",
-      "Data visualization for stakeholder presentations"
-    ],
-    tools: ["Dashboards", "Calculated Fields", "Dual Axis Charts", "Filters", "Storytelling"]
-  },
-  looker: {
-    name: "Looker Studio",
-    proficiency: "Intermediate",
-    proficiencyLevel: "intermediate",
-    howLearned: "Self-taught through documentation and building dashboards for personal projects.",
-    projects: [
-      "Business performance dashboards",
-      "Marketing data visualization",
-      "Real-time data reporting"
-    ],
-    tools: ["Data Sources", "Charts", "Calculated Fields", "Filters", "Embedded Reports"]
-  },
-  python: {
-    name: "Python",
-    proficiency: "Beginner",
-    proficiencyLevel: "beginner",
-    howLearned: "TechCrush AI/ML Scholarship, MIT Universal AI Pilot Program, and self-study. Focus on data analysis libraries.",
-    projects: [
-      "Data cleaning and analysis with Pandas",
-      "Numerical computations with NumPy",
-      "AI model training for ESWaT (TensorFlow)"
-    ],
-    tools: ["Pandas", "NumPy", "TensorFlow.js", "Jupyter Notebook"]
-  },
-  git: {
-    name: "Git & GitHub",
-    proficiency: "Intermediate",
-    proficiencyLevel: "intermediate",
-    howLearned: "Daily practice through portfolio development and project collaboration. 60+ day public learning streak.",
-    projects: [
-      "Portfolio website hosting",
-      "ESWaT repository management",
-      "Version control for all coding projects"
-    ],
-    tools: ["Git", "GitHub", "GitHub Pages", "Version Control", "Branching"]
-  },
-  dataviz: {
-    name: "Data Visualization",
-    proficiency: "Intermediate",
-    proficiencyLevel: "intermediate",
-    howLearned: "3MTT Data Analytics Fellowship, Cisco Data Analytics Essentials, and extensive project work.",
-    projects: [
-      "HR Analytics Dashboard (Excel)",
-      "JAMB Top Scorers Dashboard",
-      "ESWaT map-based waste visualization"
-    ],
-    tools: ["Tableau", "Looker Studio", "Excel Charts", "Leaflet Maps", "Recharts"]
-  },
-  webapp: {
-    name: "Web App Development with AI",
-    proficiency: "Intermediate",
-    proficiencyLevel: "intermediate",
-    howLearned: "TechCrush AI/ML Scholarship, 3MTT NextGen Hackathon, and self-study. Winner of Enugu State Hackathon.",
-    projects: [
-      "ESWaT - AI-powered waste management app (96% accuracy)",
-      "Dbay Network Business Website (payment integration)",
-      "Portfolio website"
-    ],
-    tools: ["React", "TypeScript", "TensorFlow.js", "Leaflet", "HTML/CSS", "Netlify"]
-  }
-};
+  <script>
+  // Skill Data - Detailed information for each skill
+  const skillData = {
+    excel: {
+      name: "Microsoft Excel",
+      proficiency: "Advanced",
+      proficiencyLevel: "advanced",
+      howLearned: "Self-taught through 3MTT Data Analytics Fellowship, Cisco Data Analytics Essentials, and hands-on project work. Daily practice with real datasets.",
+      projects: [
+        "HR Analytics Dashboard (attrition analysis with pivot tables & slicers)",
+        "JAMB Top Scorers Dashboard (10-year performance trends)",
+        "ESWaT data management (Google Sheets backend integration)"
+      ],
+      tools: ["Pivot Tables", "Power Query", "DAX", "Advanced Formulas", "Slicers", "Charts"]
+    },
+    sql: {
+      name: "SQL",
+      proficiency: "Intermediate",
+      proficiencyLevel: "intermediate",
+      howLearned: "Self-taught through online resources, 3MTT curriculum, and practical application using MySQL and DBeaver.",
+      projects: [
+        "Database querying for data cleaning and analysis",
+        "Data extraction for HR and business reporting",
+        "Google Sheets Query functions for backend data management"
+      ],
+      tools: ["MySQL", "DBeaver", "JOINs", "Subqueries", "Aggregation Functions"]
+    },
+    tableau: {
+      name: "Tableau",
+      proficiency: "Intermediate",
+      proficiencyLevel: "intermediate",
+      howLearned: "Hands-on practice through 3MTT Data Analytics Fellowship and personal projects.",
+      projects: [
+        "Interactive dashboards for business metrics",
+        "Data visualization for stakeholder presentations"
+      ],
+      tools: ["Dashboards", "Calculated Fields", "Dual Axis Charts", "Filters", "Storytelling"]
+    },
+    looker: {
+      name: "Looker Studio",
+      proficiency: "Intermediate",
+      proficiencyLevel: "intermediate",
+      howLearned: "Self-taught through documentation and building dashboards for personal projects.",
+      projects: [
+        "Business performance dashboards",
+        "Marketing data visualization",
+        "Real-time data reporting"
+      ],
+      tools: ["Data Sources", "Charts", "Calculated Fields", "Filters", "Embedded Reports"]
+    },
+    python: {
+      name: "Python",
+      proficiency: "Beginner",
+      proficiencyLevel: "beginner",
+      howLearned: "TechCrush AI/ML Scholarship, MIT Universal AI Pilot Program, and self-study. Focus on data analysis libraries.",
+      projects: [
+        "Data cleaning and analysis with Pandas",
+        "Numerical computations with NumPy",
+        "AI model training for ESWaT (TensorFlow)"
+      ],
+      tools: ["Pandas", "NumPy", "TensorFlow.js", "Jupyter Notebook"]
+    },
+    git: {
+      name: "Git & GitHub",
+      proficiency: "Intermediate",
+      proficiencyLevel: "intermediate",
+      howLearned: "Daily practice through portfolio development and project collaboration. 60+ day public learning streak.",
+      projects: [
+        "Portfolio website hosting",
+        "ESWaT repository management",
+        "Version control for all coding projects"
+      ],
+      tools: ["Git", "GitHub", "GitHub Pages", "Version Control", "Branching"]
+    },
+    dataviz: {
+      name: "Data Visualization",
+      proficiency: "Intermediate",
+      proficiencyLevel: "intermediate",
+      howLearned: "3MTT Data Analytics Fellowship, Cisco Data Analytics Essentials, and extensive project work.",
+      projects: [
+        "HR Analytics Dashboard (Excel)",
+        "JAMB Top Scorers Dashboard",
+        "ESWaT map-based waste visualization"
+      ],
+      tools: ["Tableau", "Looker Studio", "Excel Charts", "Leaflet Maps", "Recharts"]
+    },
+    webapp: {
+      name: "Web App Development with AI",
+      proficiency: "Intermediate",
+      proficiencyLevel: "intermediate",
+      howLearned: "TechCrush AI/ML Scholarship, 3MTT NextGen Hackathon, and self-study. Winner of Enugu State Hackathon.",
+      projects: [
+        "ESWaT - AI-powered waste management app (96% accuracy)",
+        "Dbay Network Business Website (payment integration)",
+        "Portfolio website"
+      ],
+      tools: ["React", "TypeScript", "TensorFlow.js", "Leaflet", "HTML/CSS", "Netlify"]
+    }
+  };
 
-// Function to render modal content
-function renderSkillModal(skillId) {
-  const skill = skillData[skillId];
-  if (!skill) return;
-  
-  const proficiencyColor = skill.proficiencyLevel === 'advanced' ? '🟢 Advanced' : 
-                          (skill.proficiencyLevel === 'intermediate' ? '🟡 Intermediate' : '🔵 Beginner');
-  
-  const projectsHtml = skill.projects.map(project => `<li style="margin-bottom: 0.3rem;">📌 ${project}</li>`).join('');
-  const toolsHtml = skill.tools.map(tool => `<span class="skill-tag" style="margin: 0.2rem; font-size: 0.7rem;">${tool}</span>`).join('');
-  
-  const html = `
-    <div class="skill-section">
-      <div class="skill-section-title">📊 Proficiency</div>
-      <div class="skill-section-content">
-        <span class="proficiency-${skill.proficiencyLevel}" style="padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: 600;">
-          ${proficiencyColor}
-        </span>
-      </div>
-    </div>
+  // Function to render modal content
+  function renderSkillModal(skillId) {
+    const skill = skillData[skillId];
+    if (!skill) return;
     
-    <div class="skill-section">
-      <div class="skill-section-title">🎓 How I Learned</div>
-      <div class="skill-section-content">${skill.howLearned}</div>
-    </div>
+    const proficiencyColor = skill.proficiencyLevel === 'advanced' ? '🟢 Advanced' : 
+                            (skill.proficiencyLevel === 'intermediate' ? '🟡 Intermediate' : '🔵 Beginner');
     
-    <div class="skill-section">
-      <div class="skill-section-title">🚀 Projects Using ${skill.name}</div>
-      <div class="skill-section-content">
-        <ul style="margin-left: 1.2rem; list-style-type: none; padding-left: 0;">
-          ${projectsHtml}
-        </ul>
-      </div>
-    </div>
+    const projectsHtml = skill.projects.map(project => `<li style="margin-bottom: 0.3rem;">📌 ${project}</li>`).join('');
+    const toolsHtml = skill.tools.map(tool => `<span class="skill-tag" style="margin: 0.2rem; font-size: 0.7rem;">${tool}</span>`).join('');
     
-    <div class="skill-section">
-      <div class="skill-section-title">🛠️ Specific Tools & Techniques</div>
-      <div class="skill-section-content">
-        <div style="display: flex; flex-wrap: wrap; gap: 0.3rem;">
-          ${toolsHtml}
+    const html = `
+      <div class="skill-section">
+        <div class="skill-section-title">📊 Proficiency</div>
+        <div class="skill-section-content">
+          <span class="proficiency-${skill.proficiencyLevel}" style="padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: 600;">
+            ${proficiencyColor}
+          </span>
         </div>
       </div>
-    </div>
-  `;
-  
-  document.getElementById('modalSkillTitle').textContent = skill.name;
-  document.getElementById('modalSkillBody').innerHTML = html;
-}
+      
+      <div class="skill-section">
+        <div class="skill-section-title">🎓 How I Learned</div>
+        <div class="skill-section-content">${skill.howLearned}</div>
+      </div>
+      
+      <div class="skill-section">
+        <div class="skill-section-title">🚀 Projects Using ${skill.name}</div>
+        <div class="skill-section-content">
+          <ul style="margin-left: 0; list-style-type: none; padding-left: 0;">
+            ${projectsHtml}
+          </ul>
+        </div>
+      </div>
+      
+      <div class="skill-section">
+        <div class="skill-section-title">🛠️ Specific Tools & Techniques</div>
+        <div class="skill-section-content">
+          <div style="display: flex; flex-wrap: wrap; gap: 0.3rem;">
+            ${toolsHtml}
+          </div>
+        </div>
+      </div>
+    `;
+    
+    document.getElementById('modalSkillTitle').textContent = skill.name;
+    document.getElementById('modalSkillBody').innerHTML = html;
+  }
 
-// Modal functions
-function openSkillModal(skillId) {
-  renderSkillModal(skillId);
-  const modal = document.getElementById('skillModal');
-  modal.classList.add('show');
-  document.body.style.overflow = 'hidden';
-}
+  // Modal functions
+  function openSkillModal(skillId) {
+    renderSkillModal(skillId);
+    const modal = document.getElementById('skillModal');
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
 
-function closeSkillModal() {
-  const modal = document.getElementById('skillModal');
-  modal.classList.remove('show');
-  document.body.style.overflow = '';
-}
+  function closeSkillModal() {
+    const modal = document.getElementById('skillModal');
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+  }
 
-// Add click listeners to all skill tags
-document.querySelectorAll('.skill-tag').forEach(tag => {
-  tag.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const skillId = tag.getAttribute('data-skill');
-    if (skillId && skillData[skillId]) {
-      openSkillModal(skillId);
+  // Add click listeners to all skill tags
+  document.querySelectorAll('.skill-tag').forEach(tag => {
+    tag.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const skillId = tag.getAttribute('data-skill');
+      if (skillId && skillData[skillId]) {
+        openSkillModal(skillId);
+      }
+    });
+  });
+
+  // Close modal when clicking outside content
+  document.getElementById('skillModal').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('skillModal')) {
+      closeSkillModal();
     }
   });
-});
 
-// Close modal when clicking outside content
-document.getElementById('skillModal').addEventListener('click', (e) => {
-  if (e.target === document.getElementById('skillModal')) {
-    closeSkillModal();
-  }
-});
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeSkillModal();
+    }
+  });
 
-// Close on Escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeSkillModal();
+  // Project Dropdown Functionality
+  const projectSelect = document.getElementById('projectSelect');
+  if (projectSelect) {
+    projectSelect.addEventListener('change', function() {
+      const selectedValue = this.value;
+      if (selectedValue) {
+        const targetElement = document.getElementById(selectedValue);
+        if (targetElement) {
+          // Remove previous highlight
+          document.querySelectorAll('.project-item').forEach(item => {
+            item.classList.remove('project-highlight');
+          });
+          // Add highlight to target
+          targetElement.classList.add('project-highlight');
+          // Scroll to target
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Reset select after 1 second
+          setTimeout(() => {
+            projectSelect.value = '';
+            // Remove highlight after animation
+            setTimeout(() => {
+              targetElement.classList.remove('project-highlight');
+            }, 1500);
+          }, 1000);
+        }
+      }
+    });
   }
-});
-  
-  <script>
+
   // Typewriter Effect
   const messages = [
     "Welcome to My Space",
@@ -1558,7 +1664,7 @@ document.addEventListener('keydown', (e) => {
     });
   }
 
-  // Mobile Drawer Menu - FIXED
+  // Mobile Drawer Menu
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const mobileDrawer = document.getElementById('mobileDrawer');
   const drawerOverlay = document.getElementById('drawerOverlay');
@@ -1620,7 +1726,6 @@ document.addEventListener('keydown', (e) => {
   
   window.addEventListener('scroll', setActiveNav);
   window.addEventListener('load', setActiveNav);
-   
 </script>
 </body>
 </html>
