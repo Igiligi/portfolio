@@ -1130,7 +1130,7 @@ body.dark-mode .proficiency-beginner { background: #4a1a1a; color: #f87171; }
         <div class="hero-buttons">
           <a href="#projects" class="hero-btn primary">See My Work</a>
           <a href="https://www.linkedin.com/in/chibueze-igiligi-15056a2a3" class="hero-btn secondary">My Journey</a>
-          <a href="https://drive.google.com/file/d/19Wh1wTX5aU80DoSklbFdHkB0uYA8y4Sd/view?usp=sharing" class="hero-btn secondary" download>📄 Download CV</a>
+          <a href="https://drive.google.com/file/d/19Wh1wTX5aU80DoSklbFdHkB0uYA8y4Sd/view?usp=sharing" class="hero-btn secondary" target="_blank">📄 View / Download CV</a>
         </div>
       </div>
     </div>
@@ -1562,18 +1562,13 @@ body.dark-mode .proficiency-beginner { background: #4a1a1a; color: #f87171; }
       if (selectedValue) {
         const targetElement = document.getElementById(selectedValue);
         if (targetElement) {
-          // Remove previous highlight
           document.querySelectorAll('.project-item').forEach(item => {
             item.classList.remove('project-highlight');
           });
-          // Add highlight to target
           targetElement.classList.add('project-highlight');
-          // Scroll to target
           targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          // Reset select after 1 second
           setTimeout(() => {
             projectSelect.value = '';
-            // Remove highlight after animation
             setTimeout(() => {
               targetElement.classList.remove('project-highlight');
             }, 1500);
