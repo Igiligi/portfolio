@@ -982,6 +982,15 @@ body.dark-mode .contact-btn {
   .cert-grid {
     grid-template-columns: 1fr;
   }
+  
+  /* LinkedIn embed responsive fix */
+  .linkedin-embed-wrapper {
+    padding: 0.25rem !important;
+  }
+  
+  .linkedin-embed-wrapper iframe {
+    height: 300px !important;
+  }
 }
 
 /* Skill Modal Styles */
@@ -1114,6 +1123,29 @@ body.dark-mode .skill-section-title {
 body.dark-mode .proficiency-advanced { background: #1a3a2a; color: #4ade80; }
 body.dark-mode .proficiency-intermediate { background: #4a3a1a; color: #fbbf24; }
 body.dark-mode .proficiency-beginner { background: #4a1a1a; color: #f87171; }
+
+/* LinkedIn Embed Wrapper */
+.linkedin-embed-wrapper {
+  background: #f1f5f9;
+  border-radius: 12px;
+  padding: 0.5rem;
+  margin: 0.75rem 0;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.linkedin-embed-wrapper iframe {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+body.dark-mode .linkedin-embed-wrapper {
+  background: #2d2d44;
+  border-color: #3d3d5c;
+}
     
   </style>
   
@@ -1137,6 +1169,7 @@ body.dark-mode .proficiency-beginner { background: #4a1a1a; color: #f87171; }
             <div class="nav-dropdown">
               <button class="dropdown-trigger">Projects ▼</button>
               <div class="dropdown-menu">
+                <a href="#" data-project="linkedin-video-project">🎬 LinkedIn Video Post</a>
                 <a href="#" data-project="hr-dashboard">📊 HR Analytics Dashboard</a>
                 <a href="#" data-project="jamb-dashboard">📈 JAMB Top Scorers Dashboard</a>
                 <a href="#" data-project="eswat">🗑️ ESWaT - Waste Management</a>
@@ -1204,6 +1237,65 @@ body.dark-mode .proficiency-beginner { background: #4a1a1a; color: #f87171; }
     <!-- Projects Section -->
     <div class="card" id="projects">
       <h2>🚀 My Projects</h2>
+
+      <!-- Project 0: LinkedIn Video Post -->
+      <div id="linkedin-video-project" class="project-item">
+        <h3>🎬 LinkedIn Video: HR Analytics Dashboard Walkthrough</h3>
+        <h4>Visualizing Workforce Attrition & Overtime Patterns</h4>
+        
+        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 0.5rem;">
+          🔐 <strong>Note:</strong> Please log in to LinkedIn to view the embedded video. If the video doesn't load, you can view it directly via the link below.
+        </p>
+        
+        <div class="linkedin-embed-wrapper">
+          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7476298579498827776?compact=1" 
+                  height="399" 
+                  width="504" 
+                  frameborder="0" 
+                  allowfullscreen="" 
+                  title="Embedded LinkedIn Video - HR Analytics Dashboard">
+          </iframe>
+        </div>
+        <p class="screenshot-caption" style="margin-top: 0;">
+          📊 Walkthrough of the HR Analytics Dashboard - identifying attrition drivers and overtime risks
+        </p>
+
+        <!-- Video Performance Stats -->
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">59</span>
+            <span class="stat-label">Video Views</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">8</span>
+            <span class="stat-label">Likes</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">4</span>
+            <span class="stat-label">Comments</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">25s</span>
+            <span class="stat-label">Avg. Watch Time</span>
+          </div>
+        </div>
+
+        <p>In this video, I walk through my <strong>HR Analytics Dashboard</strong>, demonstrating how Excel pivot tables and interactive slicers can help HR teams identify:</p>
+        <ul class="recognition-list" style="margin-bottom: 1rem;">
+          <li><strong>16% attrition rate</strong> - pinpointing departments with the highest turnover</li>
+          <li><strong>Overtime impact</strong> - employees working overtime are 3x more likely to leave</li>
+          <li><strong>Department insights</strong> - Sales department leads with 92 attrition cases</li>
+        </ul>
+        <p><strong>Tech Stack:</strong> Microsoft Excel (Pivot Tables, Pivot Charts, Slicers)</p>
+        
+        <div>
+          <a href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7476298579498827776/" class="project-link" target="_blank">🔗 View Original LinkedIn Post</a>
+          <a href="https://github.com/Igiligi/hr-excel-interactive-dashboard" class="project-link secondary" target="_blank">🐙 View Dashboard Code</a>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <hr style="border: none; border-top: 2px solid #e2e8f0; margin: 1.5rem 0; opacity: 0.5;">
 
       <!-- Project 1: HR Analytics Dashboard -->
       <div id="hr-dashboard" class="project-item">
